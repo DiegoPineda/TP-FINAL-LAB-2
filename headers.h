@@ -1,6 +1,7 @@
 #ifndef HEADERS_H_INCLUDED
 #define HEADERS_H_INCLUDED
 
+printf("hola");
 typedef struct
 {
     char nombreYApellido[30];
