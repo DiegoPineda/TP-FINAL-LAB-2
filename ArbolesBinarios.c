@@ -15,10 +15,6 @@ nodoArb* buscarEnArbol(nodoArb* arbol,char dni[]);
 char preguntar();
 nodoArb* cargarArbol(nodoArb* arbol,int *cantidad);
 
-int main()
-{
-}
-
 ///Cuerpo de funciones:
 
 nodoArb* inicArbol()
