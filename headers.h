@@ -75,18 +75,27 @@ typedef struct
     struct nodo2* siguiente;
 } nodoPostre;
 
-typedef
-{
-    cliente dato;
+typedef struct{
+    pedidoUsuario user;
+    struct nodoPedido *listaPedidos;
+    struct pedidoCelda *sig;
+}pedidoCelda;
 
-    bool comida;
+typedef struct{
+    int dni;
+    int idpedido;
+    float costeTotal;
+}pedidoUsuario;
 
+typedef struct{
+    pedido p;
+    struct nodoPedido *sig;
+}nodoPedido;
 
-    bool bebida;
-    pedidoBebida dato;
-
-    bool postre;
-    postre dato;
+typedef struct{
+    char producto[30];
+    int cantidad;
+    float precio;
 }pedido;
 
 #endif
