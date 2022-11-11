@@ -4,11 +4,6 @@
 #include "windows.h"
 
 ///Estructuras para el manejo de listas dobles:
-typedef struct
-{
-    char nombre[20];
-    int nivel;
-} usuario;
 
 typedef struct
 {
@@ -23,8 +18,7 @@ typedef struct
     struct nodo2* atras;
 } fila;
 
-///Funcion administradora:
-void menu();
+
 ///Funciones multi-uso:
 nodo2* inicLista();
 nodo2* crearNodo(jugador dato);
@@ -37,16 +31,12 @@ void mostrarLista(nodo2* lista);
 ///Funciones para el ejercicio 1:
 nodo2* cargarLista(nodo2* lista);
 nodo2* borrarNodo(char nombre[20],nodo2* lista);
-///Funciones para el ejercicio 2:
-int listaCapicua(nodo2* lista2,nodo2* lista3);
+
 ///Funciones para el ejercicio 3:
 void inicFila(fila* cola);
 void mostrarFila(fila* cola);
-void agregarPpioFila(fila* cola,nodo2* nuevoNodo);
-jugador extraerDeFila(fila* cola);
 void agregaFinal(fila* cola, nodo2* nuevoNodo);
 void leerFila(fila* cola);
-jugador bprimero(fila* cola);
 int filavacia(fila* cola);
 
 int main()
@@ -54,96 +44,7 @@ int main()
     menu();
     return 0;
 }
-///Funcion administrativa:
-void menu()
-{
-    ///Variables multiuso:
-    int opcion=0;
-    nodo2* lista;
-    nodo2* lista2;
-    nodo2* lista3;
-    ///Variables ejercicio 1:
-    char nombre[20];
-    ///Variables ejercicio 2:
-    int capicua;
-    ///Variables ejercicio 3:
-    fila* cola;
-    char control='s';
-    jugador tope;
 
-    system("cls");
-    printf("Menu de Guia TP4.2:\n");
-    printf("\n[1] Ejercicio.");
-    printf("\n[2] Ejercicio.");
-    printf("\n[3] Ejercicio.");
-    printf("\n\nSeleccione una opcion: ");
-    scanf("%i",&opcion);
-    system("cls");
-    switch(opcion)
-    {
-    case 1:
-        lista=inicLista();
-        lista=cargarLista(lista);
-        system("color 0c");
-        printf("Ingrese el nombre del jugador que desea borrar: ");
-        fflush(stdin);
-        gets(nombre);
-        system("cls");
-        lista=borrarNodo(nombre,lista);
-        system("color 07");
-        mostrarLista(lista);
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        menu();
-        break;
-    case 2:
-        lista=inicLista();
-        lista2=inicLista();
-        lista3=inicLista();
-        lista=cargarLista(lista);
-        lista3=lista;
-        lista2=buscarUltimo(lista);
-        capicua=listaCapicua(lista2,lista3);
-        if(capicua==0)
-        {
-            printf("La lista es capicua");
-        }
-        else
-        {
-            printf("La lista no es capicua");
-        }
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        menu();
-        break;
-    case 3:
-        inicFila(&cola);
-        while(control=='s')
-        {
-            leerFila(&cola);
-            control=preguntar();
-        }
-        if(filavacia(&cola)==0)
-        {
-            printf("La fila esta cargada\n\n");
-        }
-        else
-        {
-            printf("La fila esta vacia\n\n");
-        }
-        mostrarFila(&cola);
-        tope=bprimero(&cola);
-        printf("\n\nEl primero de la fila es %s",tope.nombre);
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        menu();
-        break;
-
-    }
-}
 ///Funciones multi-uso:
 char preguntar()
 {
@@ -306,25 +207,6 @@ nodo2* borrarNodo(char nombre[20],nodo2* lista)
     return lista;
 }
 
-///Funciones ejercicio 2:
-int listaCapicua(nodo2* lista2,nodo2* lista3)
-{
-    int i=0;
-
-    if(lista2!=lista3)
-    {
-        if(lista2->dato.nivel==lista3->dato.nivel)
-        {
-            i=listaCapicua(lista2->anterior,lista3->siguiente);
-        }
-        else
-        {
-            i=1;
-        }
-    }
-
-    return i;
-}
 
 ///Funciones ejercicio 3:
 void inicFila(fila* cola)
@@ -344,23 +226,7 @@ void mostrarFila(fila* cola)
     }
     printf("\n\nAdelante-------------------------------------------------Atras\n");
 }
-void agregarPpioFila(fila* cola,nodo2* nuevoNodo)
-{
-    nodo2* seg;
 
-    if(cola->adelante==NULL)
-    {
-        cola->adelante=nuevoNodo;
-        cola->atras=nuevoNodo;
-    }
-    else
-    {
-        seg=cola->adelante; ///seg es el primero de la fila
-        nuevoNodo->siguiente=seg; ///el siguiente del nuevo es el primero de la fila
-        seg->anterior=nuevoNodo; ///el anterior de seg tambien es el nuevo nodo
-        cola->adelante=nuevoNodo; /// el primero de la fila ahora es el nuevo y su siguiente es el anterior primero
-    }
-}
 jugador extraerDeFila(fila* cola)
 {
     jugador rta;
@@ -413,19 +279,7 @@ void leerFila(fila* cola)
     aux=crearNodo(a);
     agregaFinal(cola,aux);
 }
-jugador bprimero(fila* cola)
-{
-    jugador rta;
 
-    rta.nivel=-1;
-    if(cola->adelante!=NULL)
-    {
-        nodo2* aux=cola->adelante;
-        strcpy(rta.nombre,aux->dato.nombre);
-        rta.nivel=aux->dato.nivel;
-    }
-    return rta;
-}
 int filavacia(fila* cola)
 {
     int rta=0;
