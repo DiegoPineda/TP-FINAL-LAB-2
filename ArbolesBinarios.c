@@ -4,7 +4,6 @@
 
 ///Prototipado de funciones:
 void menu();
-nodo* inicLista();
 nodoArb* inicArbol();
 nodoArb* inicNodoArb();
 nodoArb* crearNodoArb(persona dato);
@@ -12,100 +11,15 @@ nodoArb* insertarEnArb(nodoArb* arbol,nodoArb* nuevoNodo);
 void mostrarPreOrder(nodoArb* arbol);
 void mostrarInOrder(nodoArb* arbol);
 void mostrarPostOrder(nodoArb* arbol);
-nodoArb* buscarEnArbol(nodoArb* arbol,int legajo);
+nodoArb* buscarEnArbol(nodoArb* arbol,char dni[]);
 char preguntar();
 nodoArb* cargarArbol(nodoArb* arbol,int *cantidad);
-int sumarLegajos(nodoArb* arbol);
-nodo* crearNodoLista(persona dato);
-nodo* agregarEnListaAlppio(nodo* lista,nodo* nuevoL);
-nodo* pasarArbolALista(nodoArb* arbol,nodo* lista);
-void mostrarListaRecursiva(nodo* lista);
 
 int main()
 {
-    menu();
-
-    return 0;
 }
 
 ///Cuerpo de funciones:
-
-void menu()
-{
-    int opc;
-    nodoArb* arbol;
-    nodoArb* nuevoNodo;
-    persona dato;
-    int legajo=0,sumaLegajos=0;
-    int *cantidad=0;
-    nodo* lista;
-    nodo* nuevoL;
-    nodo* buscado;
-
-    system("cls");
-    printf("Menu de la guia:\n\n");
-    printf("\n[1]Ejercicio\n[2]Ejercicio\n[3]Ejercicio\n[4]Ejercicio\n[5]Ejercicio\n[6]Ejercicio\n[7]Ejercicio\n[8]Ejercicio\n[9]Ejercicio\n[10]Ejercicio");
-    printf("\n\nSeleccione una opcion: ");
-    scanf("%i",&opc);
-    system("cls");
-    switch(opc)
-    {
-    case 1:
-        printf("Ejercicios 1 / 2 / 3:\n\n");
-        lista=inicLista();
-        arbol=inicArbol();
-        arbol=cargarArbol(arbol,&cantidad);
-        sumaLegajos=sumarLegajos(arbol);
-        printf("La suma total de los legajos es: %i",sumaLegajos);
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        printf("Su arbol en pre-orden:\n\n");
-        mostrarPreOrder(arbol);
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        printf("Su arbol en in-orden:\n\n");
-        mostrarInOrder(arbol);
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        printf("Su arbol en post-orden:\n\n");
-        mostrarPostOrder(arbol);
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        lista=pasarArbolALista(arbol,lista);
-        printf("El contenido de su lista:\n\n");
-        mostrarListaRecursiva(lista);
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        printf("Ingrese el legajo de la persona que desea buscar!\n\n");
-        printf("Legajo: ");
-        scanf("%i",&legajo);
-        system("cls");
-        buscado=buscarEnArbol(arbol,legajo);
-        if(buscado!=NULL)
-        {
-            printf("Se ha encontrado a la persona!\n\nSus datos son:\n\nNombre: %s\nLegajo: %i",buscado->dato.nombre,buscado->dato.legajo);
-        }
-        else
-        {
-            printf("No se ha encontrado a la persona!");
-        }
-        printf("\n\n");
-        system("pause");
-        system("cls");
-        menu();
-        break;
-    }
-}
-
-nodo* inicLista()
-{
-    return NULL;
-}
 
 nodoArb* inicArbol()
 {
@@ -151,9 +65,9 @@ void mostrarPreOrder(nodoArb* arbol)
     if(arbol!=NULL)
     {
         printf("Nombre: %s",arbol->dato.nombreYApellido);
-        printf("\nLegajo: %s",arbol->dato.dni);
+        printf("\nDni: %s",arbol->dato.dni);
         printf("\nCalle y altura: %s",arbol->dato.calleYAltura);
-        printf("\nLegajo: %s",arbol->dato.telefono);
+        printf("\nTelefono: %s",arbol->dato.telefono);
 
         printf("\n--------------------\n");
         mostrarPreOrder(arbol->izq);
@@ -167,9 +81,9 @@ void mostrarInOrder(nodoArb* arbol)
     {
         mostrarInOrder(arbol->izq);
         printf("Nombre: %s",arbol->dato.nombreYApellido);
-        printf("\nLegajo: %s",arbol->dato.dni);
+        printf("\nDni: %s",arbol->dato.dni);
         printf("\nCalle y altura: %s",arbol->dato.calleYAltura);
-        printf("\nLegajo: %s",arbol->dato.telefono);
+        printf("\nTelefono: %s",arbol->dato.telefono);
         printf("\n--------------------\n");
         mostrarInOrder(arbol->der);
     }
@@ -182,9 +96,9 @@ void mostrarPostOrder(nodoArb* arbol)
         mostrarPostOrder(arbol->izq);
         mostrarPostOrder(arbol->der);
         printf("Nombre: %s",arbol->dato.nombreYApellido);
-        printf("\nLegajo: %s",arbol->dato.dni);
+        printf("\nDni: %s",arbol->dato.dni);
         printf("\nCalle y altura: %s",arbol->dato.calleYAltura);
-        printf("\nLegajo: %s",arbol->dato.telefono);
+        printf("\nTelefono: %s",arbol->dato.telefono);
         printf("\n--------------------\n");
     }
 }
@@ -254,41 +168,3 @@ nodoArb* cargarArbol(nodoArb* arbol,int *cantidad)
     }
     return arbol;
 }
-
-
-nodo* crearNodoLista(usuario dato)
-{
-    nodo* aux=(nodo*)malloc(sizeof(nodo));
-    aux->dato=dato;
-    aux->sig=NULL;
-
-    return aux;
-}
-
-nodo* agregarEnListaAlppio(nodo* lista,nodo* nuevoL)
-{
-    if(lista==NULL)
-    {
-        lista=nuevoL;
-    }
-    else
-    {
-        nuevoL->sig=lista;
-        lista=nuevoL;
-    }
-    return lista;
-}
-
-
-
-void mostrarListaRecursiva(nodo* lista)
-{
-    if(lista!=NULL)
-    {
-        printf("Nombre: %s",lista->dato.nombre);
-        printf("\nLegajo: %i",lista->dato.legajo);
-        printf("\n--------------------\n");
-        mostrarListaRecursiva(lista->sig);
-    }
-}
-
