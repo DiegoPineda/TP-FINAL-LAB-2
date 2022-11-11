@@ -38,6 +38,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="headers.h" />
+		<Unit filename="listasDobles.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
