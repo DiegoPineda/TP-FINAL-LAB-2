@@ -1,39 +1,7 @@
-
-typedef struct
-{
-    int id;
-    char nombre[20];
-    float precio;
-    int id_categoria;
-    char nombre_cat[20];
-} stDatosComida;
-
-typedef struct
-{
-    int id;
-    char nombre[20];
-    float precio;
-} comida;
-
-typedef struct
-{
-    comida dato;
-    struct nodoComida* anterior;
-    struct nodoComida* siguiente;
-} nodoComida;
-
-typedef struct
-{
-    int id_categoria;
-    char nombre_cat[20];
-} categoria;
-
-typedef struct
-{
-    categoria dato;
-    nodoComida *lista;
-} CatComida;
-///---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+#include "string.h"
+#include "comidas.h"
 
 nodoComida *inicLista();
 nodoComida *crearNodo(comida dato);
@@ -46,6 +14,8 @@ comida agregarComida(stDatosComida dtosComida);
 categoria crearCatComida(stDatosComida dtosComida);
 int altaComidas(CatComida arreglo[], stDatosComida dtosComida, int validos);
 int ingresarNvaComida(CatComida arreglo[], int validos, int dimension);
+int validarCat(CatComida arreglo[], int validos, stDatosComida auxiliar);
+int validarcomida(nodoComida *lista, int id);
 int seleccionarCategoria(CatComida arreglo[], int validos);
 int seleccionarComida(nodoComida *lista);
 nodoComida *borrarNodo(nodoComida *lista, int id);
@@ -378,12 +348,12 @@ int ingresarNvaComida(CatComida arreglo[], int validos, int dimension)
             gets(auxiliar.nombre);
             printf("Ingrese la id de la comida: \n");
             scanf("%i", &auxiliar.id);
-            int posCom = retornarIDcomida(arreglo[pos].lista, auxiliar.id);
-            while(posCom != -1)
+            int posCom = validarcomida(arreglo[pos].lista, auxiliar.id);
+            while(posCom == 1)
             {
                 printf("ID de comida no disponible, intente con un nuevo id: ");
                 scanf("%i", &auxiliar.id);
-                posCom= retornarIDcomida(arreglo[pos].lista, auxiliar.id);
+                posCom= validarcomida(arreglo[pos].lista, auxiliar.id);
             }
             printf("Ingrese el precio de la comida: \n");
             fflush(stdin);
@@ -401,12 +371,12 @@ int ingresarNvaComida(CatComida arreglo[], int validos, int dimension)
             printf("Ingrese la id de la comida: \n");
             scanf("%i", &auxiliar.id);
             int pos = buscarPosCatComida(arreglo, auxiliar.id_categoria, validos);
-            int posCom = retornarIDcomida(arreglo[pos].lista, auxiliar.id);
-            while(posCom != -1)
+            int posCom = validarcomida(arreglo[pos].lista, auxiliar.id);
+            while(posCom == 1)
             {
                 printf("ID de comida no disponible, intente con un nuevo id: ");
                 scanf("%i", &auxiliar.id);
-                posCom= retornarIDcomida(arreglo[pos].lista, auxiliar.id);
+                posCom= validarcomida(arreglo[pos].lista, auxiliar.id);
             }
             printf("Ingrese el precio de la comida: \n");
             fflush(stdin);
@@ -431,9 +401,23 @@ int validarCat(CatComida arreglo[], int validos, stDatosComida auxiliar)
     int pos = buscarPosCatComida(arreglo, auxiliar.id_categoria, validos);
     if(pos != -1 && strcmpi(arreglo[pos].dato.nombre_cat, auxiliar.nombre_cat) ==0)
     {
-        aux = 1;
+        aux = pos;
     }
     return aux;
+}
+
+int validarcomida(nodoComida *lista, int id)
+{
+    int auxiliar = -1;
+    while(lista != NULL && auxiliar == -1)
+    {
+        if(lista->dato.id == id)
+        {
+            auxiliar= 1;
+        }
+        lista=lista->siguiente;
+    }
+    return auxiliar;
 }
 
 int seleccionarCategoria(CatComida arreglo[], int validos)
@@ -480,8 +464,6 @@ void BorrarUnaComida(CatComida arreglo[], int validos)
     arreglo[pos].lista = borrarNodo(arreglo[pos].lista, auxiliar);
 
 }
-
-
 
 nodoComida *borrarNodo(nodoComida *lista, int id)
 {
@@ -548,27 +530,12 @@ void cambiarPrecioComida(CatComida arreglo[], int validos)
 
 }
 
-
 nodoComida *modificarNodo(nodoComida *nodoAux)
 {
     printf("Ingrese el nuevo precio para %s: ", nodoAux->dato.nombre);
     scanf("%f", &nodoAux->dato.precio);
 
     return nodoAux;
-}
-
-int retornarIDcomida(nodoComida *lista, int id)
-{
-    int auxiliar =-1;
-    while(lista != NULL && auxiliar != 1)
-    {
-        if(lista->dato.id == id)
-        {
-            auxiliar= lista->dato.id;
-        }
-        lista=lista->siguiente;
-    }
-    return auxiliar;
 }
 
 nodoComida *encontrarComida(nodoComida *lista, int id)
@@ -586,7 +553,5 @@ nodoComida *encontrarComida(nodoComida *lista, int id)
     }
     return ComidaBuscada;
 }
-
-
 
 
