@@ -79,10 +79,11 @@ typedef struct{
     pedidoUsuario user;
     struct nodoPedido *listaPedidos;
     struct pedidoCelda *sig;
+    struct pedidoCelda *ante;
 }pedidoCelda;
 
 typedef struct{
-    int dni;
+    char dni;
     int idpedido;
     float costeTotal;
 }pedidoUsuario;
@@ -90,6 +91,7 @@ typedef struct{
 typedef struct{
     pedido p;
     struct nodoPedido *sig;
+    struct nodoPedido *ante;
 }nodoPedido;
 
 typedef struct{
@@ -97,5 +99,14 @@ typedef struct{
     int cantidad;
     float precio;
 }pedido;
+
+typedef struct{
+    char dni;
+    int idpedido;
+    float costeTotal;
+    char producto[30];
+    int cantidad;
+    float precio;
+}registroPedido;
 
 #endif

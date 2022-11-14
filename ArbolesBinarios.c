@@ -3,7 +3,6 @@
 #include "string.h"
 
 ///Prototipado de funciones:
-void menu();
 nodoArb* inicArbol();
 nodoArb* inicNodoArb();
 nodoArb* crearNodoArb(persona dato);
