@@ -207,7 +207,7 @@ pedidoCelda *hacerPedido(CatComida arreglo[],  int validos,pedidoCelda *lista) /
         case 3:
         {
             printf("Eliminar\n");
-            lista=borrarUNpedido(lista, "40885253" )
+            lista=borrarUNpedido(lista, "40885253" );
             break;
         }
         case 9:
