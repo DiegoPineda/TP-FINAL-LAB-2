@@ -1,15 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "headers.h"
-#include "comidas.h"
-#include "pedidos.h"
-
-
-
-
-
-
+#include "comida.h"
+#include "pedido.h"
 
 int main()
 {

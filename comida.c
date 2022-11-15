@@ -1,10 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "comidas.h"
 
-
-
+#include "comida.h"
+#include "pedido.h"
 
 void mostrarArchi()
 {

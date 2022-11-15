@@ -1,11 +1,9 @@
-#ifndef PEDIDOS_H_INCLUDED
-#define PEDIDOS_H_INCLUDED
+#ifndef PEDIDO_H_INCLUDED
+#define PEDIDO_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-const char *archivoPedidos="pedidos.bin";
-int Npedidos=1;
 
 typedef struct{
     char producto[30];
@@ -55,8 +53,14 @@ nodoPedido *buscarUltimoPedido (nodoPedido *lista);
 pedidoCelda *hacerPedido(CatComida arreglo[],  int validos,pedidoCelda *lista);
 void mostrarListaPedidos(pedidoCelda *lista);
 void mostrarItemPedidos(pedido *pedido);
-
+pedidoCelda *BuscarPedidoPorDNI(pedidoCelda *pedidos, char dni[]);
+pedidoCelda *borrarNodoPedido(pedidoCelda *lista, int id);
+nodoPedido *borrarNodoProducto(nodoPedido *lista, char nombre[]);
+pedidoCelda *borrarUNpedido(pedidoCelda *lista, char dni[]);
 
 
 
 #endif // PEDIDOS_H_INCLUDED
+
+
+

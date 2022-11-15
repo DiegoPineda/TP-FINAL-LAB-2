@@ -1,5 +1,5 @@
-#ifndef COMIDAS_H_INCLUDED
-#define COMIDAS_H_INCLUDED
+#ifndef COMIDA_H_INCLUDED
+#define COMIDA_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -66,3 +66,5 @@ nodoComida *encontrarComida(nodoComida *lista, int id);
 stDatosComida cargarStruct();
 
 #endif // COMIDAS_H_INCLUDED
+
+
