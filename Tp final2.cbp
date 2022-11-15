@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="TP FINAL LABORATORIO 2" />
+		<Option title="Tp final2" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/TP FINAL LABORATORIO 2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/Tp final2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -16,7 +16,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/TP FINAL LABORATORIO 2" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/Tp final2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -31,22 +31,19 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Comidas.c">
+		<Unit filename="comida.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="comidas.h" />
-		<Unit filename="headers.h" />
-		<Unit filename="login.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="comida.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="pedidos.h" />
+		<Unit filename="pedido.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pedido.h" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
+			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

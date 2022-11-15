@@ -1,0 +1,26 @@
+# depslib dependency file v1.0
+1668483877 source:e:\users\seba\documents\programación1\tp final2\comida.c
+	"comida.h"
+	"pedido.h"
+
+1668483783 e:\users\seba\documents\programación1\tp final2\comida.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668484526 e:\users\seba\documents\programación1\tp final2\pedido.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668484051 source:e:\users\seba\documents\programación1\tp final2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"pedido.h"
+
+1668484109 source:e:\users\seba\documents\programación1\tp final2\pedido.c
+	"comida.h"
+	"pedido.h"
+
