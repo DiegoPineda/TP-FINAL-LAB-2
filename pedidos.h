@@ -55,8 +55,9 @@ nodoPedido *buscarUltimoPedido (nodoPedido *lista);
 pedidoCelda *hacerPedido(CatComida arreglo[],  int validos,pedidoCelda *lista);
 void mostrarListaPedidos(pedidoCelda *lista);
 void mostrarItemPedidos(pedido *pedido);
-
-
-
+pedidoCelda *BuscarPedidoPorDNI(pedidoCelda *pedidos, char dni[]);
+pedidoCelda *borrarNodoPedido(pedidoCelda *lista, int id);
+nodoPedido *borrarNodoProducto(nodoPedido *lista, char nombre[]);
+pedidoCelda *borrarUNpedido(pedidoCelda *lista, char dni[]);
 
 #endif // PEDIDOS_H_INCLUDED

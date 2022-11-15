@@ -5,12 +5,6 @@
 #include "comidas.h"
 #include "pedidos.h"
 
-
-
-
-
-
-
 int main()
 {
       CatComida Categorias[10];

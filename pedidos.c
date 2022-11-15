@@ -207,6 +207,7 @@ pedidoCelda *hacerPedido(CatComida arreglo[],  int validos,pedidoCelda *lista) /
         case 3:
         {
             printf("Eliminar\n");
+            lista=borrarUNpedido(lista, "40885253" )
             break;
         }
         case 9:
@@ -270,4 +271,122 @@ void mostrarUnPedido(pedidoCelda *lista,int idpedido)
         lista=lista->sig;
     }
     mostrarListaItems(lista->listaPedidos);
+}
+
+
+pedidoCelda *BuscarPedidoPorDNI(pedidoCelda *pedidos, char dni[])
+{
+    pedidoCelda *nodoBuscado = NULL;
+    int flag=0;
+    while(pedidos != NULL && flag == 0)
+    {
+        if(strcmpi(pedidos->user.dni, dni) ==0);
+        {
+            nodoBuscado=pedidos;
+            flag=1;
+        }
+        pedidos= pedidos->sig;
+    }
+    return nodoBuscado;
+}
+
+pedidoCelda *borrarNodoPedido(pedidoCelda *lista, int id)
+{
+    if (lista != NULL)
+    {
+        if(lista->user.idpedido == id)
+        {
+            pedidoCelda *aBorrar = lista;
+            lista = lista->sig;
+            if(lista != NULL)
+            {
+                lista->ante = NULL;
+            }
+            free(aBorrar);
+        }
+        else
+        {
+            pedidoCelda *seguidora = lista;
+            while(seguidora != NULL && seguidora->user.idpedido != id)
+            {
+                seguidora=seguidora->sig;
+            }
+            if(seguidora!= NULL)
+            {
+                pedidoCelda *anterior = seguidora->ante;
+                anterior->sig = seguidora->sig;
+                if(seguidora->sig != NULL)
+                {
+                    pedidoCelda *seg = seguidora->sig;
+                    seg =  anterior;
+                }
+                free(seguidora);
+            }
+        }
+    }
+    return lista;
+}
+
+nodoPedido *borrarNodoProducto(nodoPedido *lista, char nombre[])
+{
+    if (lista != NULL)
+    {
+        if(strcmpi(lista->p.producto, nombre) == 0)
+        {
+            nodoPedido *aBorrar = lista;
+            lista = lista->sig;
+            if(lista != NULL)
+            {
+                lista->ante = NULL;
+            }
+            free(aBorrar);
+        }
+        else
+        {
+            nodoPedido *seguidora = lista;
+            while(seguidora != NULL && strcmpi(seguidora->p.producto, nombre) !=0)
+            {
+                seguidora=seguidora->sig;
+            }
+            if(seguidora!= NULL)
+            {
+                nodoPedido *anterior = seguidora->ante;
+                anterior->sig = seguidora->sig;
+                if(seguidora->sig != NULL)
+                {
+                    nodoPedido *seg = seguidora->sig;
+                    seg =  anterior;
+                }
+                free(seguidora);
+            }
+        }
+    }
+    return lista;
+}
+
+pedidoCelda *borrarUNpedido(pedidoCelda *lista, char dni[])
+{
+    char continuar='s';
+    char nombreProducto[20];
+    pedidoCelda *pedidoBuscado = BuscarPedidoPorDNI(lista, dni);
+
+    printf("\tCANCELAR UN PRODUCTO\n");
+    mostrarUnPedido(pedidoBuscado, pedidoBuscado->user.idpedido);
+    printf("ingrese el nombre del producto: ");
+    fflush(stdin);
+    gets(nombreProducto);
+    nodoPedido *productos = pedidoBuscado->listaPedidos;
+    if(productos != NULL)
+    {
+        pedidoBuscado->listaPedidos = borrarNodoProducto(pedidoBuscado->listaPedidos, nombreProducto);
+    }
+
+    if(pedidoBuscado->listaPedidos == NULL)
+    {
+
+        int idPedido = pedidoBuscado->user.idpedido;
+        lista = borrarNodoPedido(lista, idPedido);
+    }
+
+    return lista;
 }
