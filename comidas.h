@@ -2,7 +2,7 @@
 #define COMIDAS_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
-#include "string.h"
+#include <string.h>
 
 typedef struct
 {
@@ -63,5 +63,6 @@ nodoComida *borrarNodo(nodoComida *lista, int id);
 void cambiarPrecioComida(CatComida arreglo[], int validos);
 nodoComida *modificarNodo(nodoComida *nodoAux);
 nodoComida *encontrarComida(nodoComida *lista, int id);
+stDatosComida cargarStruct();
 
 #endif // COMIDAS_H_INCLUDED

@@ -31,24 +31,22 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="ArbolesBinarios.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="Comidas.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="ListasDobles.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="comidas.h" />
 		<Unit filename="headers.h" />
-		<Unit filename="listasDobles.h" />
 		<Unit filename="login.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Extensions />
+		<Unit filename="pedidos.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

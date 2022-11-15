@@ -1,57 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "string.h"
+#include <string.h>
 #include "comidas.h"
 
-nodoComida *inicLista();
-nodoComida *crearNodo(comida dato);
-nodoComida *agregarAlPrincipio(nodoComida *lista, nodoComida *nvoNodo);
-nodoComida *agregarOrdenado(nodoComida *lista, nodoComida *nvoNodo);
-int leerArvchivoComidas(CatComida arreglo[], int dimension);
-int buscarPosCatComida(CatComida arreglo[], int id, int validos);
-int agregarCatComida(CatComida arreglo[], categoria nvaCat, int validos);
-comida agregarComida(stDatosComida dtosComida);
-categoria crearCatComida(stDatosComida dtosComida);
-int altaComidas(CatComida arreglo[], stDatosComida dtosComida, int validos);
-int ingresarNvaComida(CatComida arreglo[], int validos, int dimension);
-int validarCat(CatComida arreglo[], int validos, stDatosComida auxiliar);
-int validarcomida(nodoComida *lista, int id);
-int seleccionarCategoria(CatComida arreglo[], int validos);
-int seleccionarComida(nodoComida *lista);
-nodoComida *borrarNodo(nodoComida *lista, int id);
-nodoComida *encontrarComida(nodoComida *lista, int id);
-
-nodoComida *modificarNodo(nodoComida *nodoAux);
-
-void cambiarPrecioComida(CatComida arreglo[], int validos);
-stDatosComida cargarStruct();
-int main()
-{
-    //cargarArchivo1();
-    //mostrarArchi();
-     CatComida Categorias[10];
-    int validos = leerArvchivoComidas(Categorias, 10);
-    mostrarArregloComidas(Categorias, validos);
-    system("PAUSE");
-    system("CLS");
-    validos = ingresarNvaComida(Categorias,validos, 10);
-    mostrarArregloComidas(Categorias, validos);
-    system("PAUSE");
-    system("CLS");
-    cambiarPrecioComida(Categorias, validos);
-    mostrarArregloComidas(Categorias, validos);
-    system("PAUSE");
-    system("CLS");
-    BorrarUnaComida(Categorias, validos);
-    mostrarArregloComidas(Categorias, validos);
 
 
-
-
-    return 0;
-
-
-}
 
 void mostrarArchi()
 {
