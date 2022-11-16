@@ -406,46 +406,54 @@ int ingresarNvaCategriaBebida(CeldaBebida arreglo[], int validos, int dimension)
     stDatosBebidas auxiliar;
     char continuar = 's';
     char nombre[20];
-    while(continuar == 's')
+    if(validos < dimension)
     {
-        if(validos < dimension)
+        printf("\t\t CARGA DE NUEVA CATEGORIA\n\n");
+        mostrarCategoriasBebidas(arreglo, validos);
+        printf("Ingrese el nombre de la categoria: \n");
+        fflush(stdin);
+        gets(nombre);
+        int flag = validarNombreBebida(arreglo, nombre);
+        while(flag == -1)
         {
-            printf("\t\t CARGA DE NUEVA CATEGORIA\n\n");
-            mostrarCategoriasBebidas(arreglo, validos);
+            printf("No pueden haber dos categorias con el mismo nombre\n");
             printf("Ingrese el nombre de la categoria: \n");
             fflush(stdin);
             gets(nombre);
-            int flag = validarNombreCatBebida(arreglo, validos, nombre);
-            if(flag == -1)
-            {
-                printf("No pueden haber dos categorias con el mismo nombre\n");
-                printf("Ingrese el nombre de la categoria: \n");
-                fflush(stdin);
-                gets(nombre);
-            }
-
-            auxiliar = CargarUnaBebida(arreglo, validos);
-            strcpy(auxiliar.nombre_cat, nombre);
-            auxiliar.id_categoria = arreglo[validos-1].dato.id_categoria +1;
-
-            validos = altaBebidas(arreglo, auxiliar, validos);
-            cargarArchivoBebida(auxiliar);
-
-            printf("Desea continuar? presione s\n");
-            fflush(stdin);
-            scanf("%c", &continuar);
-            system("CLS");
-
+            flag = validarNombreBebida(arreglo, nombre);
         }
 
-        else
+        strcpy(auxiliar.nombre_cat, nombre);
+        printf("Ingrese la id de la categoria: ");
+        scanf("%i", &auxiliar.id_categoria);
+        int pos = buscarPosCatBebida(arreglo, auxiliar.id_categoria, validos);
+        while(pos != -1)
         {
-            printf("NO SE PUEDE CREAR OTRA CATEGORIA\n");
-            printf("Vuelva al menu e ingrese la bebida en una categoria existente\n");
-            continuar = 'n';
+            printf("id en uso, ingrese una nueva: ");
+            scanf("%i", &auxiliar.id_categoria);
+            pos = buscarPosCatBebida(arreglo, auxiliar.id_categoria, validos);
         }
-
+        printf("Ingrese el nombre de la comida: \n");
+        fflush(stdin);
+        gets(auxiliar.nombre);
+        printf("Ingrese la id de la comida: \n");
+        scanf("%i", &auxiliar.id);
+        printf("Ingrese el contenido: ");
+        fflush(stdin);
+        gets(auxiliar.cantidad);
+        printf("Ingrese el precio de la comida: \n");
+        fflush(stdin);
+        scanf("%f", &auxiliar.precio);
     }
+
+    else
+    {
+        printf("NO SE PUEDE CREAR OTRA CATEGORIA\n");
+        printf("Vuelva al menu e ingrese nueva comida en categoria existente\n");
+        continuar = 'n';
+    }
+        validos=altaBebidas(arreglo,auxiliar,validos);
+        mostrarCategoriasBebidas(arreglo, validos);
 
     return validos;
 }
