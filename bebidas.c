@@ -1,46 +1,45 @@
-#include "comida.h"
-#include "pedido.h"
+#include "bebidas.h"
 
-int menuComidas(CatComida arreglo[], int validos)
+int menuBebida(CeldaBebida arreglo[], int validos)
 {
     int elecc;
     do
     {
 
 
-        printf("1.Mostrar Categorias y Comidas\n2.Ingresar Nueva Comida\n3.Ingresar Nueva Categoria\n4.Cambiar Precio Comida\n5. Borrar una Comida\n6. Cambiar Precio Una Categoria.\n0.Salir\n");
+        printf("1.Mostrar Categorias y Bebidas\n2.Ingresar Nueva Bebida\n3.Ingresar Nueva Categoria\n4.Cambiar Precio Bebida\n5. Borrar una Bebida\n6. Cambiar Precio Una Categoria.\n0.Salir\n");
         fflush(stdin);
         scanf("%i",&elecc);
         switch(elecc)
         {
         case 1:
         {
-            mostrarArregloComidas(arreglo,validos);
+            mostrarArregloBebidas(arreglo,validos);
             break;
         }
         case 2:
         {
-            validos = ingresarNvaComida(arreglo,validos);
+            validos = ingresarNvaBebida(arreglo,validos);
             break;
         }
         case 3:
         {
-            validos = ingresarNvaCategria(arreglo, validos, 10);
+            validos = ingresarNvaCategriaBebida(arreglo, validos, 50);
             break;
         }
         case 4:
         {
-            cambiarPrecioComida(arreglo, validos);
+            cambiarPrecioBebida(arreglo, validos);
             break;
         }
         case 5:
         {
-            BorrarUnaComida(arreglo, validos);
+            BorrarUnaBebida(arreglo, validos);
             break;
         }
         case 6:
         {
-            cambiarPrecioUnaCategoria(arreglo, validos);
+            cambiarPrecioUnaCatBebida(arreglo, validos);
             break;
         }
 
@@ -63,44 +62,45 @@ int menuComidas(CatComida arreglo[], int validos)
     return validos;
 }
 
-void mostrarArchiBebidas()
+void mostrarArchi()
 {
-    stDatosComida aux;
-    FILE*archi=fopen("ArchivoComidas.bin","rb");
+    stDatosBebidas aux;
+    FILE*archi=fopen("ArchivoBebida.bin","rb");
     if(archi!=NULL)
     {
 
-        while(fread(&aux,sizeof(stDatosComida),1,archi)>0)
+        while(fread(&aux,sizeof(stDatosBebidas),1,archi)>0)
         {
-            mostrarArchivo(aux);
+            mostrarArchivoBebida(aux);
 
         }
         fclose(archi);
     }
 }
 
-void mostrarArchivo(stDatosComida aux)
+void mostrarArchivoBebida(stDatosBebidas aux)
 {
     printf("ID %d\n",aux.id);
     printf("NOMBRE %s\n",aux.nombre);
     printf("PRECIO %.2f\n",aux.precio);
+    printf("CANTIDAD %s\n",aux.cantidad);
     printf("id categoria %i\n",aux.id_categoria);
     printf("Nombre categoria %s\n",aux.nombre_cat);
     printf("--------------------------------------------------------------------------------------------\n");
     printf("\n");
 }
 
-void cargarArchivo1()
+void cargarArchivoBebida1()
 {
-    stDatosComida auxiliar;
-    FILE *buffer = fopen("ArchivoComidas.bin", "ab");
+    stDatosBebidas auxiliar;
+    FILE *buffer = fopen("ArchivoBebida.bin", "ab");
     if(buffer != NULL)
     {
         char continuar = 's';
         while(continuar == 's')
         {
-            auxiliar = cargarStruct();
-            fwrite(&auxiliar, sizeof(stDatosComida), 1, buffer);
+            auxiliar = cargarStructBebida();
+            fwrite(&auxiliar, sizeof(stDatosBebidas), 1, buffer);
             printf("Desea continuar? presione s\n");
             fflush(stdin);
             scanf("%c", &continuar);
@@ -111,35 +111,38 @@ void cargarArchivo1()
     }
 }
 
-void cargarArchivo(stDatosComida auxiliar)
+void cargarArchivoBebida(stDatosBebidas auxiliar)
 {
 
-    FILE *buffer = fopen("ArchivoComidas.bin", "ab");
+    FILE *buffer = fopen("ArchivoBebida.bin", "ab");
     if(buffer != NULL)
     {
-        fwrite(&auxiliar, sizeof(stDatosComida), 1, buffer);
+        fwrite(&auxiliar, sizeof(stDatosBebidas), 1, buffer);
 
         fclose(buffer);
     }
 }
 
-stDatosComida cargarStruct()
+stDatosBebidas cargarStructBebida()
 {
-    printf("\t\t CARGA DE NUEVA COMIDA\n");
-    stDatosComida auxiliar;
+    printf("\t\t CARGA DE UNA NUEVA BEBIDA\n");
+    stDatosBebidas auxiliar;
     printf("Ingrese el nombre de la categoria: \n");
     fflush(stdin);
     gets(auxiliar.nombre_cat);
     printf("Ingrese la id de la categoria: \n");
     fflush(stdin);
     scanf("%i", &auxiliar.id_categoria);
-    printf("Ingrese el nombre de la comida: \n");
+    printf("Ingrese el nombre de la bebida: \n");
     fflush(stdin);
     gets(auxiliar.nombre);
-    printf("Ingrese la id de la comida: \n");
+    printf("Ingrese la id del postre: \n");
     fflush(stdin);
     scanf("%i", &auxiliar.id);
-    printf("Ingrese el precio de la comida: \n");
+    printf("Ingrese el contenido de la bebida: \n");
+    fflush(stdin);
+    gets(auxiliar.cantidad);
+    printf("Ingrese el precio: \n");
     fflush(stdin);
     scanf("%f", &auxiliar.precio);
 
@@ -147,21 +150,21 @@ stDatosComida cargarStruct()
 
 }
 
-nodoComida *inicLista()
+nodoBebida *inicListaBebida()
 {
     return NULL;
 }
 
-nodoComida *crearNodo(comida dato)
+nodoBebida *crearNodoBebida(bebida dato)
 {
-    nodoComida *aux=(nodoComida*) malloc(sizeof(nodoComida));
+    nodoBebida *aux=(nodoBebida*) malloc(sizeof(nodoBebida));
     aux->dato = dato;
     aux->anterior = NULL;
     aux->siguiente = NULL;
     return aux;
 }
 
-nodoComida *agregarAlPrincipio(nodoComida *lista, nodoComida *nvoNodo)
+nodoBebida *agregarAlPrincipioBebida(nodoBebida *lista, nodoBebida *nvoNodo)
 {
     if(lista == NULL)
     {
@@ -176,7 +179,7 @@ nodoComida *agregarAlPrincipio(nodoComida *lista, nodoComida *nvoNodo)
     return lista;
 }
 
-nodoComida *agregarOrdenado(nodoComida *lista, nodoComida *nvoNodo)
+nodoBebida *agregarOrdenadoBebida(nodoBebida *lista, nodoBebida *nvoNodo)
 {
     if(lista == NULL)
     {
@@ -186,12 +189,12 @@ nodoComida *agregarOrdenado(nodoComida *lista, nodoComida *nvoNodo)
     {
         if(nvoNodo->dato.id < lista->dato.id)
         {
-            lista = agregarAlPrincipio(lista, nvoNodo);
+            lista = agregarAlPrincipioBebida(lista, nvoNodo);
         }
         else
         {
-            nodoComida *anterior = lista;
-            nodoComida *seguidora = lista->siguiente;
+            nodoBebida *anterior = lista;
+            nodoBebida *seguidora = lista->siguiente;
             while(seguidora != NULL && nvoNodo->dato.id > seguidora->dato.id)
             {
                 anterior = seguidora;
@@ -209,16 +212,16 @@ nodoComida *agregarOrdenado(nodoComida *lista, nodoComida *nvoNodo)
     return lista;
 }
 
-int leerArvchivoComidas(CatComida arreglo[], int dimension)
+int leerArvchivoBebida(CeldaBebida arreglo[], int dimension)
 {
     int validos =0;
-    FILE *buffer = fopen("ArchivoComidas.bin", "rb");
-    stDatosComida datosComida;
+    FILE *buffer = fopen("ArchivoBebida.bin", "rb");
+    stDatosBebidas datosBebida;
     if(buffer != NULL)
     {
-        while(fread(&datosComida, sizeof(stDatosComida), 1, buffer) > 0 && validos < dimension)
+        while(fread(&datosBebida, sizeof(stDatosBebidas), 1, buffer) > 0 && validos < dimension)
         {
-            validos = altaComidas(arreglo, datosComida, validos);
+            validos = altaBebidas(arreglo, datosBebida, validos);
         }
         fclose(buffer);
     }
@@ -226,7 +229,7 @@ int leerArvchivoComidas(CatComida arreglo[], int dimension)
     return validos;
 }
 
-int buscarPosCatComida(CatComida arreglo[], int id, int validos)
+int buscarPosCatBebida(CeldaBebida arreglo[], int id, int validos)
 {
     int rta =-1;
     int i=0;
@@ -241,52 +244,53 @@ int buscarPosCatComida(CatComida arreglo[], int id, int validos)
     return rta;
 }
 
-int agregarCatComida(CatComida arreglo[], categoria nvaCat, int validos)
+int agregarCatBebida(CeldaBebida arreglo[], categoriaBebida nvaCat, int validos)
 {
     arreglo[validos].dato.id_categoria = nvaCat.id_categoria;
     strcpy(arreglo[validos].dato.nombre_cat, nvaCat.nombre_cat);
-    arreglo[validos].lista=inicLista();
+    arreglo[validos].lista=inicListaBebida();
     validos++;
 
     return validos;
 }
 
-comida agregarComida(stDatosComida dtosComida)
+bebida agregarBebida(stDatosBebidas dtosBebida)
 {
-    comida nvaComida;
-    nvaComida.id = dtosComida.id;
-    strcpy(nvaComida.nombre, dtosComida.nombre);
-    nvaComida.precio = dtosComida.precio;
+    bebida nvaBebida;
+    nvaBebida.id = dtosBebida.id;
+    strcpy(nvaBebida.nombre, dtosBebida.nombre);
+    nvaBebida.precio = dtosBebida.precio;
+    strcpy(nvaBebida.cantidad, dtosBebida.cantidad);
 
-    return nvaComida;
+    return nvaBebida;
 }
 
-categoria crearCatComida(stDatosComida dtosComida)
+categoriaBebida crearCatBebida(stDatosBebidas dtosBebida)
 {
 
-    categoria nvaCategoria;
-    nvaCategoria.id_categoria = dtosComida.id_categoria;
-    strcpy(nvaCategoria.nombre_cat, dtosComida.nombre_cat);
+    categoriaBebida nvaCategoria;
+    nvaCategoria.id_categoria = dtosBebida.id_categoria;
+    strcpy(nvaCategoria.nombre_cat, dtosBebida.nombre_cat);
     return nvaCategoria;
 }
 
-int altaComidas(CatComida arreglo[], stDatosComida dtosComida, int validos)
+int altaBebidas(CeldaBebida arreglo[], stDatosBebidas dtosBebida, int validos)
 {
-    comida nvaComida = agregarComida(dtosComida);
-    nodoComida *nvoNodo = crearNodo(nvaComida);
-    int pos = buscarPosCatComida(arreglo, dtosComida.id_categoria, validos);
+    bebida nvaBebida = agregarBebida(dtosBebida);
+    nodoBebida *nvoNodo = crearNodoBebida(nvaBebida);
+    int pos = buscarPosCatBebida(arreglo, dtosBebida.id_categoria, validos);
     if(pos == -1)
     {
-        categoria nvaCategoria = crearCatComida(dtosComida);
-        validos = agregarCatComida(arreglo, nvaCategoria, validos);
+        categoriaBebida nvaCategoria = crearCatBebida(dtosBebida);
+        validos = agregarCatBebida(arreglo, nvaCategoria, validos);
         pos = validos-1;
     }
-    arreglo[pos].lista = agregarOrdenado(arreglo[pos].lista, nvoNodo);
+    arreglo[pos].lista = agregarOrdenadoBebida(arreglo[pos].lista, nvoNodo);
 
     return validos;
 }
 
-void mostrarCategorias(CatComida arreglo[],  int validos)
+void mostrarCategoriasBebidas(CeldaBebida arreglo[],  int validos)
 {
     printf("\tCATEGORIAS\n");
     for(int i=0; i<validos; i++)
@@ -296,94 +300,97 @@ void mostrarCategorias(CatComida arreglo[],  int validos)
     printf("\n\n");
 }
 
-void mostrarArregloComidas(CatComida arreglo[], int validos)
+void mostrarArregloBebidas(CeldaBebida arreglo[], int validos)
 {
     int i=0;
     while(i < validos)
     {
         printf("\tCATEGORIA: %s           ID:  %i\n\n", arreglo[i].dato.nombre_cat, arreglo[i].dato.id_categoria);
-        mostrarListaComida(arreglo[i].lista);
+        mostrarListaBebida(arreglo[i].lista);
         printf("--------------------------------------------------------------\n");
         printf("--------------------------------------------------------------\n");
         i++;
     }
 }
 
-void mostrarListaComida(nodoComida*lista)
+void mostrarListaBebida(nodoBebida*lista)
 {
     while(lista != NULL)
     {
-        mostrarComida(lista->dato);
+        mostrarBebida(lista->dato);
         lista = lista->siguiente;
     }
 }
 
-void mostrarComida(comida aux)
+void mostrarBebida(bebida aux)
 {
     printf("NOMBRE: %s\n",aux.nombre);
-    printf("ID %d\n",aux.id);
+    printf("ID: %d\n",aux.id);
+    printf("CONTENIDO: %s\n",aux.cantidad);
     printf("PRECIO %.2f\n",aux.precio);
     printf("\n");
     printf("\n");
 }
 
-stDatosComida CargarUnaComida(CatComida arreglo[], int posCategoria)
+stDatosBebidas CargarUnaBebida(CeldaBebida arreglo[], int posCategoria)
 {
-    stDatosComida auxiliar;
-    printf("Ingrese el nombre de la comida: \n");
+    stDatosBebidas auxiliar;
+    printf("Ingrese el nombre de la bebida: \n");
     fflush(stdin);
     gets(auxiliar.nombre);
-    int flag = validarNombreComida(arreglo[posCategoria].lista, auxiliar.nombre);
+    int flag = validarNombreBebida(arreglo[posCategoria].lista, auxiliar.nombre);
     if(flag == -1)
     {
-        printf("No pueden haber dos comidas con el mismo nombre\n");
-        printf("Ingrese el nombre de la comida: \n");
+        printf("No pueden haber dos Bebidas con el mismo nombre\n");
+        printf("Ingrese el nombre de la Bebida: \n");
         fflush(stdin);
         gets(auxiliar.nombre);
     }
 
-    printf("Ingrese la id de la comida: \n");
+    printf("Ingrese la id de la Bebida: \n");
     scanf("%i", &auxiliar.id);
-    int posCom = retornarIDcomida(arreglo[posCategoria].lista, auxiliar.id);
+    int posCom = retornarIDbebida(arreglo[posCategoria].lista, auxiliar.id);
     while(posCom != -1)
     {
-        printf("ID de comida no disponible, intente con un nuevo id: ");
+        printf("ID de la bebida no disponible, intente con un nuevo id: ");
         scanf("%i", &auxiliar.id);
-        posCom= retornarIDcomida(arreglo[posCategoria].lista, auxiliar.id);
+        posCom= retornarIDbebida(arreglo[posCategoria].lista, auxiliar.id);
     }
-    printf("Ingrese el precio de la comida: \n");
+    printf("Ingrese el contenido de la Bebida: \n");
+    fflush(stdin);
+    gets(auxiliar.cantidad);
+    printf("Ingrese el precio de la Bebida: \n");
     fflush(stdin);
     scanf("%f", &auxiliar.precio);
     return auxiliar;
 }
 
-
-int ingresarNvaComida(CatComida arreglo[], int validos)
+int ingresarNvaBebida(CeldaBebida arreglo[], int validos)
 {
-    stDatosComida auxiliar;
+    stDatosBebidas auxiliar;
     char continuar = 's';
     while(continuar == 's')
     {
-        printf("\t\t CARGA DE NUEVA COMIDA\n\n");
-        mostrarCategorias(arreglo, validos);
-        printf("Ingrese la id de la categoria: \n");
+        printf("\t\t CARGA DE NUEVA BEBIDA\n\n");
+        mostrarCategoriasBebidas(arreglo, validos);
+        printf("Ingrese id de la bebida \n");
         fflush(stdin);
         scanf("%i", &auxiliar.id_categoria);
-        int pos = buscarPosCatComida(arreglo,auxiliar.id_categoria, validos);
+        int pos = buscarPosCatBebida(arreglo,auxiliar.id_categoria, validos);
         while(pos == -1)
         {
             printf("Categoria invalida\n");
             printf("Ingrese una id existente : ");
             fflush(stdin);
             scanf("%i", &auxiliar.id_categoria);
-            pos = buscarPosCatComida(arreglo, auxiliar.id_categoria, validos);
+            pos = buscarPosCatBebida(arreglo, auxiliar.id_categoria, validos);
         }
 
-        auxiliar = CargarUnaComida(arreglo, pos);
+        auxiliar = CargarUnaBebida(arreglo, pos);
         auxiliar.id_categoria = arreglo[pos].dato.id_categoria;
 
-        validos = altaComidas (arreglo, auxiliar, validos);
-        cargarArchivo(auxiliar);
+        validos = altaBebidas (arreglo, auxiliar, validos);
+        cargarArchivoBebida(auxiliar);
 
         printf("Desea continuar? presione s\n");
         fflush(stdin);
@@ -394,9 +401,9 @@ int ingresarNvaComida(CatComida arreglo[], int validos)
     return validos;
 }
 
-int ingresarNvaCategria(CatComida arreglo[], int validos, int dimension)
+int ingresarNvaCategriaBebida(CeldaBebida arreglo[], int validos, int dimension)
 {
-    stDatosComida auxiliar;
+    stDatosBebidas auxiliar;
     char continuar = 's';
     char nombre[20];
     while(continuar == 's')
@@ -404,11 +411,11 @@ int ingresarNvaCategria(CatComida arreglo[], int validos, int dimension)
         if(validos < dimension)
         {
             printf("\t\t CARGA DE NUEVA CATEGORIA\n\n");
-            mostrarCategorias(arreglo, validos);
+            mostrarCategoriasBebidas(arreglo, validos);
             printf("Ingrese el nombre de la categoria: \n");
             fflush(stdin);
             gets(nombre);
-            int flag = validarNombreCat(arreglo, validos, nombre);
+            int flag = validarNombreCatBebida(arreglo, validos, nombre);
             if(flag == -1)
             {
                 printf("No pueden haber dos categorias con el mismo nombre\n");
@@ -417,12 +424,12 @@ int ingresarNvaCategria(CatComida arreglo[], int validos, int dimension)
                 gets(nombre);
             }
 
-            auxiliar = CargarUnaComida(arreglo, validos);
+            auxiliar = CargarUnaBebida(arreglo, validos);
             strcpy(auxiliar.nombre_cat, nombre);
             auxiliar.id_categoria = arreglo[validos-1].dato.id_categoria +1;
 
-            validos = altaComidas (arreglo, auxiliar, validos);
-            cargarArchivo(auxiliar);
+            validos = altaBebidas(arreglo, auxiliar, validos);
+            cargarArchivoBebida(auxiliar);
 
             printf("Desea continuar? presione s\n");
             fflush(stdin);
@@ -434,7 +441,7 @@ int ingresarNvaCategria(CatComida arreglo[], int validos, int dimension)
         else
         {
             printf("NO SE PUEDE CREAR OTRA CATEGORIA\n");
-            printf("Vuelva al menu e ingrese nueva comida en categoria existente\n");
+            printf("Vuelva al menu e ingrese la bebida en una categoria existente\n");
             continuar = 'n';
         }
 
@@ -443,8 +450,7 @@ int ingresarNvaCategria(CatComida arreglo[], int validos, int dimension)
     return validos;
 }
 
-
-int validarNombreCat(CatComida arreglo[], int validos, char nombre[])
+int validarNombreCatBebida(CeldaBebida arreglo[], int validos, char nombre[])
 {
     int aux = 0;
     int i=0;
@@ -459,10 +465,10 @@ int validarNombreCat(CatComida arreglo[], int validos, char nombre[])
     return aux;
 }
 
-int validarCat(CatComida arreglo[], int validos, int auxiliar)
+int validarCatBebida(CeldaBebida arreglo[], int validos, int auxiliar)
 {
     int aux = -1;
-    int pos = buscarPosCatComida(arreglo, auxiliar, validos);
+    int pos = buscarPosCatBebida(arreglo, auxiliar, validos);
     if(pos != -1)
     {
         aux = pos;
@@ -470,7 +476,7 @@ int validarCat(CatComida arreglo[], int validos, int auxiliar)
     return aux;
 }
 
-int validarNombreComida(nodoComida *lista, char nombre[])
+int validarNombreBebida(nodoBebida *lista, char nombre[])
 {
     int aux = 0;
     while( lista != NULL && aux == 0)
@@ -484,7 +490,7 @@ int validarNombreComida(nodoComida *lista, char nombre[])
     return aux;
 }
 
-int seleccionarCategoria(CatComida arreglo[], int validos)
+int seleccionarCategoriaBebida(CeldaBebida arreglo[], int validos)
 {
     int cat;
     printf("Ingrese id de la categoria: ");
@@ -493,51 +499,49 @@ int seleccionarCategoria(CatComida arreglo[], int validos)
     return cat;
 }
 
-int seleccionarComida(nodoComida *lista)
+int seleccionarBebida(nodoBebida *lista)
 {
     int auxiliar;
-    printf("ID de la comida: ");
+    printf("ID de la Bebida: ");
     scanf("%i", &auxiliar);
 
     return auxiliar;
 }
 
-void BorrarUnaComida(CatComida arreglo[], int validos)
+void BorrarUnaBebida(CeldaBebida arreglo[], int validos)
 {
-    printf("\tBORRAR COMIDA\n\n");
-    mostrarCategorias(arreglo, validos);
-    int cat = seleccionarCategoria(arreglo, validos);
-    int pos = buscarPosCatComida(arreglo, cat, validos);
+    printf("\tBorrar una Bebida\n\n");
+    mostrarCategoriasBebidas(arreglo, validos);
+    int cat = seleccionarCategoriaBebida(arreglo, validos);
+    int pos = buscarPosCatBebida(arreglo, cat, validos);
     while (pos == -1)
     {
         printf("Categoria incorrecta\n");
-        cat = seleccionarCategoria(arreglo, validos);
-        pos = buscarPosCatComida(arreglo, cat, validos);
+        cat = seleccionarCategoriaBebida(arreglo, validos);
+        pos = buscarPosCatBebida(arreglo, cat, validos);
     }
     system("CLS");
-    mostrarListaComida(arreglo[pos].lista);
-    int auxiliar = seleccionarComida(arreglo[pos].lista);
-    nodoComida *comidaBorrar = encontrarComida(arreglo[pos].lista, auxiliar);
-    while(comidaBorrar == NULL)
+    mostrarListaBebida(arreglo[pos].lista);
+    int auxiliar = seleccionarBebida(arreglo[pos].lista);
+    nodoBebida *bebidaBorrar = encontrarBebida(arreglo[pos].lista, auxiliar);
+    while(bebidaBorrar == NULL)
     {
-        printf("No hay comidas con esa id\n ");
-        auxiliar = seleccionarComida(arreglo[pos].lista);
-        comidaBorrar = encontrarComida(arreglo[pos].lista, auxiliar);
+        printf("No hay postres con esa id\n ");
+        auxiliar = seleccionarBebida(arreglo[pos].lista);
+        bebidaBorrar = encontrarBebida(arreglo[pos].lista, auxiliar);
     }
 
-    arreglo[pos].lista = borrarNodo(arreglo[pos].lista, auxiliar);
+    arreglo[pos].lista = borrarNodoBebida(arreglo[pos].lista, auxiliar);
 
 }
 
-
-
-nodoComida *borrarNodo(nodoComida *lista, int id)
+nodoBebida *borrarNodoBebida(nodoBebida *lista, int id)
 {
     if (lista != NULL)
     {
         if(lista->dato.id == id)
         {
-            nodoComida *aBorrar = lista;
+            nodoBebida *aBorrar = lista;
             lista = lista->siguiente;
             if(lista != NULL)
             {
@@ -547,18 +551,18 @@ nodoComida *borrarNodo(nodoComida *lista, int id)
         }
         else
         {
-            nodoComida *seguidora = lista;
+            nodoBebida *seguidora = lista;
             while(seguidora != NULL && seguidora->dato.id != id)
             {
                 seguidora=seguidora->siguiente;
             }
             if(seguidora!= NULL)
             {
-                nodoComida *anterior = seguidora->anterior;
+                nodoBebida *anterior = seguidora->anterior;
                 anterior->siguiente = seguidora->siguiente;
                 if(seguidora->siguiente != NULL)
                 {
-                    nodoComida *seg = seguidora->siguiente;
+                    nodoBebida *seg = seguidora->siguiente;
                     seg =  anterior;
                 }
                 free(seguidora);
@@ -568,36 +572,35 @@ nodoComida *borrarNodo(nodoComida *lista, int id)
     return lista;
 }
 
-void cambiarPrecioComida(CatComida arreglo[], int validos)
+void cambiarPrecioBebida(CeldaBebida arreglo[], int validos)
 {
-    printf("\tCAMBIOS DE PRECIOS\n");
-    mostrarCategorias(arreglo, validos);
-    int cat = seleccionarCategoria(arreglo, validos);
-    int pos = buscarPosCatComida(arreglo, cat, validos);
+    printf("\tCAMBIAR PRECIO A UN PRODUCTO\n");
+    mostrarCategoriasBebidas(arreglo, validos);
+    int cat = seleccionarCategoriaBebida(arreglo, validos);
+    int pos = buscarPosCatBebida(arreglo, cat, validos);
     while (pos == -1)
     {
         printf("Categoria incorrecta, Ingrese un id valido\n ");
-        cat = seleccionarCategoria(arreglo, validos);
-        pos = buscarPosCatComida(arreglo, cat, validos);
+        cat = seleccionarCategoriaBebida(arreglo, validos);
+        pos = buscarPosCatBebida(arreglo, cat, validos);
 
     }
     system("CLS");
-    mostrarListaComida(arreglo[pos].lista);
-    int auxiliar = seleccionarComida(arreglo[pos].lista);
-    nodoComida *comidaBuscada = encontrarComida(arreglo[pos].lista, auxiliar);
-    while(comidaBuscada == NULL)
+    mostrarListaBebida(arreglo[pos].lista);
+    int auxiliar = seleccionarBebida(arreglo[pos].lista);
+    nodoBebida *bebidaBuscada = encontrarBebida(arreglo[pos].lista, auxiliar);
+    while(bebidaBuscada == NULL)
     {
-        printf("No hay comidas con esa id");
-        auxiliar = seleccionarComida(arreglo[pos].lista);
-        comidaBuscada = encontrarComida(arreglo[pos].lista, auxiliar);
+        printf("No hay bebidad con ese id");
+        auxiliar = seleccionarBebida(arreglo[pos].lista);
+        bebidaBuscada= encontrarBebida(arreglo[pos].lista, auxiliar);
     }
 
-    comidaBuscada = modificarNodo(comidaBuscada);
+    bebidaBuscada = modificarNodoBebida(bebidaBuscada);
 
 }
 
-
-nodoComida *modificarNodo(nodoComida *nodoAux)
+nodoBebida *modificarNodoBebida(nodoBebida *nodoAux)
 {
     printf("Ingrese el nuevo precio para %s: ", nodoAux->dato.nombre);
     scanf("%f", &nodoAux->dato.precio);
@@ -605,7 +608,7 @@ nodoComida *modificarNodo(nodoComida *nodoAux)
     return nodoAux;
 }
 
-int retornarIDcomida(nodoComida *lista, int id)
+int retornarIDbebida(nodoBebida *lista, int id)
 {
     int auxiliar =-1;
     while(lista != NULL && auxiliar == -1)
@@ -619,53 +622,52 @@ int retornarIDcomida(nodoComida *lista, int id)
     return auxiliar;
 }
 
-nodoComida *encontrarComida(nodoComida *lista, int id)
+nodoBebida *encontrarBebida(nodoBebida *lista, int id)
 {
-    nodoComida *ComidaBuscada = NULL;
+    nodoBebida *bebidaBuscada = NULL;
     int flag=0;
     while(lista != NULL && flag == 0)
     {
         if(lista->dato.id == id)
         {
-            ComidaBuscada=lista;
+            bebidaBuscada=lista;
             flag=1;
         }
         lista=lista->siguiente;
     }
-    return ComidaBuscada;
+    return bebidaBuscada;
 }
 
-void cambiarPrecioUnaCategoria(CatComida arreglo[], int validos)
+void cambiarPrecioUnaCatBebida(CeldaBebida arreglo[], int validos)
 {
     int cat;
     float valor;
     printf("\tMODIFICAR PRECIO DE UNA CATEGORIA\n");
-    mostrarCategorias(arreglo, validos);
+    mostrarCategoriasBebidas(arreglo, validos);
     printf("Ingrese el id de la categoria: ");
     scanf("%i", &cat);
-    int pos = buscarPosCatComida(arreglo, cat, validos);
+    int pos = buscarPosCatBebida(arreglo, cat, validos);
     while(pos == -1)
     {
         printf("Categoria invalida, vuelva a ingresar el id categoria: ");
         scanf("%i", &cat);
-        pos = buscarPosCatComida(arreglo, cat, validos);
+        pos = buscarPosCatBebida(arreglo, cat, validos);
     }
     system("PAUSE");
     system("CLS");
-    mostrarListaComida(arreglo[pos].lista);
+    mostrarListaBebida(arreglo[pos].lista);
     printf("Que porcentaje desea aumentar?: ");
     scanf("%f", &valor);
-    arreglo[pos].lista = ModificarPrecioLista(arreglo[pos].lista, valor);
+    arreglo[pos].lista = ModificarPrecioListaBebida(arreglo[pos].lista, valor);
     system("PAUSE");
     system("CLS");
-    mostrarListaComida(arreglo[pos].lista);
+    mostrarListaBebida(arreglo[pos].lista);
 }
 
-
-nodoComida *ModificarPrecioLista(nodoComida *lista, float valor)
+nodoBebida *ModificarPrecioListaBebida(nodoBebida *lista, float valor)
 {
     float total;
-    nodoComida *aux = lista;
+    nodoBebida *aux = lista;
     if (lista != NULL)
     {
         while(lista != NULL)

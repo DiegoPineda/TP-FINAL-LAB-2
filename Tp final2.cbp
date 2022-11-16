@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="bebidas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bebidas.h" />
 		<Unit filename="comida.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -42,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pedido.h" />
+		<Unit filename="postres.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="postres.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

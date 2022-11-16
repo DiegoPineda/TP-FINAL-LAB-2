@@ -3,30 +3,27 @@
 #include <string.h>
 #include "comida.h"
 #include "pedido.h"
+#include "postres.h"
+#include "bebidas.h"
 
 int main()
 {
       CatComida Categorias[10];
-    int validos = leerArvchivoComidas(Categorias, 10);
-//    mostrarArregloComidas(Categorias, validos);
-//    system("PAUSE");
-//    system("CLS");
+      CeldaPostre Categoriaspos[10];
+      CeldaBebida CategoriasBeb[10];
+      int validos = leerArvchivoComidas(Categorias, 10);
+      //int validosBebida = leerArvchivoBebida(CategoriasBeb, 10);
+      //int validosPostres = leerArvchivoPostres(Categoriaspos, 10)
+      //validos = menuComidas(Categorias, validos);
+      //validosBebida = menuBebida(CategoriasBeb, validosBebida);
+      //validosPostre = menuPostre(Categoriaspos, validosPos);
+
+
     pedidoCelda *lista=inicLista();
 
     lista=hacerPedido(Categorias,validos,lista);
 
 //    mostrarListaPedidos(lista);
 
-
-//    validos = ingresarNvaComida(Categorias,validos, 10);
-//    mostrarArregloComidas(Categorias, validos);
-//    system("PAUSE");
-//    system("CLS");
-//    cambiarPrecioComida(Categorias, validos);
-//    mostrarArregloComidas(Categorias, validos);
-//    system("PAUSE");
-//    system("CLS");
-//    BorrarUnaComida(Categorias, validos);
-//    mostrarArregloComidas(Categorias, validos);
     return 0;
 }
