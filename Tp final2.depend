@@ -24,3 +24,44 @@
 	"comida.h"
 	"pedido.h"
 
+1668484640 source:e:\users\seba\documents\github\tp-final-lab-2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"pedido.h"
+
+1668621983 e:\users\seba\documents\github\tp-final-lab-2\comida.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668484640 e:\users\seba\documents\github\tp-final-lab-2\pedido.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668484640 source:e:\users\seba\documents\github\tp-final-lab-2\pedido.c
+	"comida.h"
+	"pedido.h"
+
+1668622786 source:e:\users\seba\documents\github\tp-final-lab-2\comida.c
+	"comida.h"
+	"pedido.h"
+
+1668622497 source:e:\users\seba\documents\github\tp-final-lab-2\postres.c
+	"postres.h"
+
+1668622497 e:\users\seba\documents\github\tp-final-lab-2\postres.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668622786 source:e:\users\seba\documents\github\tp-final-lab-2\bebidas.c
+	"bebidas.h"
+
+1668622786 e:\users\seba\documents\github\tp-final-lab-2\bebidas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

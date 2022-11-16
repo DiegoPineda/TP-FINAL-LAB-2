@@ -39,7 +39,7 @@ typedef struct
     nodoComida *lista;
 } CatComida;
 
-///Cargar arreglo de listas
+
 nodoComida *inicLista();
 nodoComida *crearNodo(comida dato);
 nodoComida *agregarAlPrincipio(nodoComida *lista, nodoComida *nvoNodo);
@@ -50,19 +50,20 @@ int agregarCatComida(CatComida arreglo[], categoria nvaCat, int validos);
 comida agregarComida(stDatosComida dtosComida);
 categoria crearCatComida(stDatosComida dtosComida);
 int altaComidas(CatComida arreglo[], stDatosComida dtosComida, int validos);
-///cargar nueva comida
-int ingresarNvaComida(CatComida arreglo[], int validos, int dimension);
-int validarCat(CatComida arreglo[], int validos, stDatosComida auxiliar);
-int validarcomida(nodoComida *lista, int id);
+int ingresarNvaComida(CatComida arreglo[], int validos);
+int ingresarNvaCategria(CatComida arreglo[], int validos, int dimension);
 int seleccionarCategoria(CatComida arreglo[], int validos);
+int validarCat(CatComida arreglo[], int validos, int dato);
+int validarNombreCat(CatComida arreglo[], int validos, char nombre[]);
+int validarNombrecomida(nodoComida *lista, char nombre[]);
 int seleccionarComida(nodoComida *lista);
-///borrar comida
-void BorrarUnaComida(CatComida arreglo[], int validos);
+stDatosComida CargarUnaComida(CatComida arreglo[], int posCategoria);
 nodoComida *borrarNodo(nodoComida *lista, int id);
-///modificar precio
-void cambiarPrecioComida(CatComida arreglo[], int validos);
-nodoComida *modificarNodo(nodoComida *nodoAux);
 nodoComida *encontrarComida(nodoComida *lista, int id);
+nodoComida *ModificarPrecioLista(nodoComida *lista, float valor);
+nodoComida *modificarNodo(nodoComida *nodoAux);
+void cambiarPrecioComida(CatComida arreglo[], int validos);
+int menuComidas(CatComida arreglo[], int validos);
 stDatosComida cargarStruct();
 
 #endif // COMIDAS_H_INCLUDED
