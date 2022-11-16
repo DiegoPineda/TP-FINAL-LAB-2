@@ -31,6 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="LoginYMenu.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="bebidas.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -39,6 +42,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="comida.h" />
+		<Unit filename="loginYMenu.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -52,6 +56,9 @@
 		<Unit filename="postres.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
+			<code_completion />
+			<envvars />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
