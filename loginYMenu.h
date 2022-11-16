@@ -10,6 +10,7 @@ typedef struct
     int admin;
     int baja;
 } cliente;
+
 void menuPrincipal();
 void RegistrarUsuario();
 void guardarUsuario(cliente a);

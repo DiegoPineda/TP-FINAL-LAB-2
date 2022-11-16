@@ -1,67 +1,69 @@
 # depslib dependency file v1.0
-1668483877 source:e:\users\seba\documents\programación1\tp final2\comida.c
-	"comida.h"
-	"pedido.h"
-
-1668483783 e:\users\seba\documents\programación1\tp final2\comida.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1668484526 e:\users\seba\documents\programación1\tp final2\pedido.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1668484051 source:e:\users\seba\documents\programación1\tp final2\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"comida.h"
-	"pedido.h"
-
-1668484109 source:e:\users\seba\documents\programación1\tp final2\pedido.c
-	"comida.h"
-	"pedido.h"
-
-1668484640 source:e:\users\seba\documents\github\tp-final-lab-2\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"comida.h"
-	"pedido.h"
-
-1668621983 e:\users\seba\documents\github\tp-final-lab-2\comida.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1668484640 e:\users\seba\documents\github\tp-final-lab-2\pedido.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1668484640 source:e:\users\seba\documents\github\tp-final-lab-2\pedido.c
-	"comida.h"
-	"pedido.h"
-
-1668622786 source:e:\users\seba\documents\github\tp-final-lab-2\comida.c
-	"comida.h"
-	"pedido.h"
-
-1668622497 source:e:\users\seba\documents\github\tp-final-lab-2\postres.c
-	"postres.h"
-
-1668622497 e:\users\seba\documents\github\tp-final-lab-2\postres.h
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1668622786 source:e:\users\seba\documents\github\tp-final-lab-2\bebidas.c
+1668627905 source:c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.c
 	"bebidas.h"
 
-1668622786 e:\users\seba\documents\github\tp-final-lab-2\bebidas.h
+1668623422 c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+
+1668627905 source:c:\users\diego\desktop\tp final\tp-final-lab-2\comida.c
+	"comida.h"
+	"pedido.h"
+
+1668623422 c:\users\diego\desktop\tp final\tp-final-lab-2\comida.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668484846 c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668627511 source:c:\users\diego\desktop\tp final\tp-final-lab-2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"pedido.h"
+	"postres.h"
+	"bebidas.h"
+	"loginYMenu.h"
+
+1668623422 c:\users\diego\desktop\tp final\tp-final-lab-2\postres.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668627245 c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.h
+
+1668484846 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
+	"comida.h"
+	"pedido.h"
+
+1668627905 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
+	"postres.h"
+
+1668629261 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
+	<stdio.h>
+	<stdlib.h>
+	"windows.h"
+	"conio.h"
+	"comida.h"
+	"pedido.h"
+	"postres.h"
+	"bebidas.h"
+	"loginYMenu.h"
+	"main.c"
+
+1668627511 c:\users\diego\desktop\tp final\tp-final-lab-2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"pedido.h"
+	"postres.h"
+	"bebidas.h"
+	"loginYMenu.h"
 

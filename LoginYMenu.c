@@ -5,23 +5,46 @@
 #define TECLA_ENTER 13
 #define TECLA_BACKSPACE 8
 #include "conio.h"
+#include "comida.h"
+#include "pedido.h"
+#include "postres.h"
+#include "bebidas.h"
+#include "loginYMenu.h"
+#include "main.c"
+
 const int adminPass = 1234;
-typedef struct
-{
-    char nombreYApellido[30];
-    char dni[8];
-    char calleYAltura[30];
-    char telefono[15];
-    char pass[20];
-    int admin;
-    int baja;
-} cliente;
+
+
+int validos;
+int validosBebida;
+int validosPostre;
+CatComida Categorias[10];
+CeldaPostre Categoriaspos[10];
+CeldaBebida CategoriasBeb[10];
 
 int main()
 {
-    menuAdministrador();
-    //menuPrincipal();
+
+      validos = leerArvchivoComidas(Categorias, 10);
+      validosBebida = leerArvchivoBebida(CategoriasBeb, 10);
+      validosPostre = leerArvchivoPostres(Categoriaspos, 10);
+
+menuPrincipal();
+
+//    pedidoCelda *lista=inicLista();
+//
+//    lista=hacerPedido(Categorias,validos,lista);
+
+//    mostrarListaPedidos(lista);
+
+    return 0;
 }
+
+
+
+
+
+
 void menuPrincipal()
 {
     system("cls");
@@ -30,23 +53,16 @@ void menuPrincipal()
     int admin = -1;
     char dni[8];
     char pass[20];
-    while(opcionMenu != 1 && opcionMenu!=2 && opcionMenu!=3)
+    do
     {
         printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
         printf("\n\t\t\t\t%cMENU PRINCIPAL%c",186,186);
         printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
-        printf("\nElija una opcion\n1:Iniciar sesion\n2:Registrarse\n3:Registrar administrador\n4:Salir   ");
+        printf("\nElija una opcion\n1.Iniciar sesion\n2.Registrarse\n3.Registrar administrador\n0.Salir\n");
         fflush(stdin);
         scanf("%i", &opcionMenu);
-        if(opcionMenu != 1 && opcionMenu!=2 && opcionMenu!=3 && opcionMenu!=4)
-        {
-            printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
-            Sleep(700);
-            system("cls");
-        }
-    }
 
-    switch(opcionMenu)
+        switch(opcionMenu)
     {
     case 1:
         system("cls");
@@ -58,18 +74,19 @@ void menuPrincipal()
         fflush(stdin);
         ocultarPass(pass);
         usuarioValido = verificarUsuario(dni, pass);
-        printf("\nVerificar usuario termina");
         admin = checkAdmin(dni);
         if(usuarioValido == 1)
         {
             if(admin == 0)
             {
+                system("cls");
                 menuUsuario();
             }
 
             else
             {
-                printf("ACA VA EL MENU ADMIN");///borrar printf y poner menu admin
+                system("cls");
+                menuAdministrador();
             }
 
         }
@@ -89,10 +106,17 @@ void menuPrincipal()
         system("cls");
         RegistrarAdministrador();
         menuPrincipal();
-    case 4:
-        return 0;
+    case 0:
         break;
+    default:
+        system("cls");
+        printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
     }
+
+
+    }while (opcionMenu!=0);
+
+
 
 }
 void RegistrarUsuario()
@@ -374,41 +398,43 @@ void RegistrarAdministrador()
 
 void menuUsuario()
 {
-    printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,187);
-    printf("\n\t\t\t\t%cMENU USUARIO%c",186,186);
-    printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,188);
     int opcionUsuario;
-    printf("\nElija una opcion\n1:Ver catalogo de productos\n2:Hacer un nuevo pedido\n3:Cancelar un pedido\n4:Volver al menu principal   ");
-    fflush(stdin);
-    scanf("%i", &opcionUsuario);
-    if(opcionUsuario != 1 && opcionUsuario!=2 && opcionUsuario!=3)
+    do
     {
-        printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
-        Sleep(700);
-        system("cls");
-    }
-    switch(opcionUsuario)
-    {
-    case 1:
-        ///FUNCION MOSTRAR PRODUCTOS
-        seraRedirigidoAlMenuUsuario();
-        menuUsuario();
-        break;
-    case 2:
-        ///FUNCION HACER UN NUEVO PEDIDO
-        seraRedirigidoAlMenuUsuario();
-        menuUsuario();
-        break;
-    case 3:
-        ///FUNCION CANCELAR UN PEDIDO
-        seraRedirigidoAlMenuUsuario;
-        menuUsuario();
-        break;
-    case 4:
-        seraRedirigidoAlMenuPrincipal;
-        menuPrincipal();
-        break;
-    }
+        printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("\n\t\t\t\t%cMENU USUARIO%c",186,186);
+        printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,188);
+        printf("\nElija una opcion\n1.Ver catalogo de productos\n2.Hacer un nuevo pedido\n3.Cancelar un pedido\n0.Volver al menu principal\n");
+        fflush(stdin);
+        scanf("%i", &opcionUsuario);
+        switch(opcionUsuario)
+        {
+        case 1:
+            ///FUNCION MOSTRAR PRODUCTOS
+            seraRedirigidoAlMenuUsuario();
+            menuUsuario();
+            break;
+        case 2:
+            ///FUNCION HACER UN NUEVO PEDIDO
+            seraRedirigidoAlMenuUsuario();
+            menuUsuario();
+            break;
+        case 3:
+            ///FUNCION CANCELAR UN PEDIDO
+            seraRedirigidoAlMenuUsuario;
+            menuUsuario();
+            break;
+        case 0:
+            seraRedirigidoAlMenuPrincipal;
+            menuPrincipal();
+            break;
+        default:
+            system("cls");
+            printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
+            break;
+        }
+    }while(opcionUsuario!=0);
+
 }
 
 void menuAdministrador()
@@ -417,21 +443,17 @@ void menuAdministrador()
         printf("\n\t\t\t\t%cMENU ADMINISTRADOR%c",186,186);
         printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
     int opcionUsuario;
-    printf("\nElija una opcion\n1:Ver catalogo de productos\n2:Hacer un nuevo pedido\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\nVolver al menu principal   ");
+
+    do
+    {
+        printf("\nElija una opcion\n1:Productos\n2:Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal   ");
     fflush(stdin);
     scanf("%i", &opcionUsuario);
-    if(opcionUsuario != 1 && opcionUsuario!=2 && opcionUsuario!=3)
-    {
-        printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
-        Sleep(700);
-        system("cls");
-    }
     switch(opcionUsuario)
     {
     case 1:
         ///FUNCION MOSTRAR PRODUCTOS
-        seraRedirigidoAlMenuUsuario();
-        menuUsuario();
+        adminProductos();
         break;
     case 2:
         ///FUNCION HACER UN NUEVO PEDIDO
@@ -443,9 +465,58 @@ void menuAdministrador()
         seraRedirigidoAlMenuUsuario;
         menuUsuario();
         break;
-    case 4:
+    case 0:
         seraRedirigidoAlMenuPrincipal;
         menuPrincipal();
         break;
+    default:
+        printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
+        Sleep(700);
+        system("cls");
+        break;
     }
+    }while(opcionUsuario!=0);
+
+}
+
+void adminProductos()
+{
+    int opcion;
+    do
+    {
+        printf("1.Comida\n2.Bebida\n3.Postre\n0.Salir");
+        fflush(stdin);
+        scanf("%i",&opcion);
+        switch(opcion)
+        {
+        case 1:
+            {
+                system("cls");
+                validos = menuComidas(Categorias, validos);
+                break;
+            }
+        case 2:
+            {
+                system("cls");
+                validosBebida = menuBebida(CategoriasBeb, validosBebida);
+                break;
+            }
+        case 3:
+            {
+                system("cls");
+                validosPostre = menuPostre(Categoriaspos, validosPostre);
+                break;
+            }
+        case 0:
+            {
+                system("cls");
+                break;
+            }
+        default:
+            {
+                system("cls");
+                printf("Opcion incorrecta, ingrese de nuevo\n");
+            }
+        }
+    }while(opcion!=0);
 }
