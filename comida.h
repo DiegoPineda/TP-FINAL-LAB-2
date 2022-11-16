@@ -39,7 +39,7 @@ typedef struct
     nodoComida *lista;
 } CatComida;
 
-
+void mostrarArchiComidas();
 nodoComida *inicLista();
 nodoComida *crearNodo(comida dato);
 nodoComida *agregarAlPrincipio(nodoComida *lista, nodoComida *nvoNodo);
@@ -65,6 +65,8 @@ nodoComida *modificarNodo(nodoComida *nodoAux);
 void cambiarPrecioComida(CatComida arreglo[], int validos);
 int menuComidas(CatComida arreglo[], int validos);
 stDatosComida cargarStruct();
+void persistirArchivoComidas(CatComida arreglo[], int validos);
+stDatosComida cargarComida(categoria dato, nodoComida *lista);
 
 #endif // COMIDAS_H_INCLUDED
 

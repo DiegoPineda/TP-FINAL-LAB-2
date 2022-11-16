@@ -669,3 +669,37 @@ nodoPostre *ModificarPrecioListaPostre(nodoPostre *lista, float valor)
     }
     return aux;
 }
+
+
+void persistirArchivoPostres(CeldaPostre arreglo[], int validos)
+{
+    stDatosPostres auxiliar;
+    FILE *buffer = fopen("ArchivoPostres.bin", "wb");
+    if(buffer)
+    {
+        for(int i=0; i<validos; i++)
+        {
+            while(arreglo[i].lista != NULL)
+            {
+                auxiliar=cargarPostre(arreglo[i].dato, arreglo[i].lista);
+                fwrite(&auxiliar,sizeof(stDatosPostres), 1, buffer);
+                arreglo[i].lista= arreglo[i].lista->siguiente;
+            }
+        }
+        fclose(buffer);
+    }
+
+}
+
+stDatosPostres cargarPostre(categoriaPostre dato, nodoPostre *lista)
+{
+    stDatosPostres aux;
+    aux.id_categoria = dato.id_categoria;
+    strcpy(aux.nombre_cat, dato.nombre_cat);
+    strcpy(aux.nombre, lista->dato.nombre);
+    aux.id = lista->dato.id;
+    aux.precio = lista->dato.precio;
+
+    return aux;
+
+}

@@ -70,6 +70,8 @@ int retornarIDbebida(nodoBebida *lista, int id);
 nodoBebida *modificarNodoBebida(nodoBebida *nodoAux);
 void cambiarPrecioBebida(CeldaBebida arreglo[], int validos);
 int menuBebida(CeldaBebida arreglo[], int validos);
+void persistirArchivoBebida(CeldaBebida arreglo[], int validos);
+stDatosBebidas cargarBebida(categoriaBebida dato, nodoBebida *lista);
 
 
 

@@ -69,6 +69,8 @@ nodoPostre *modificarNodoPostre(nodoPostre *nodoAux);
 void cambiarPrecioPostre(CeldaPostre arreglo[], int validos);
 int menuPostre(CeldaPostre arreglo[], int validos);
 stDatosPostres cargarStrucPostres();
+void persistirArchivoPostres(CeldaPostre arreglo[], int validos);
+stDatosPostres cargarPostre(categoriaPostre dato, nodoPostre *lista);
 
 
 

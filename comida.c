@@ -63,7 +63,7 @@ int menuComidas(CatComida arreglo[], int validos)
     return validos;
 }
 
-void mostrarArchiBebidas()
+void mostrarArchiComidas()
 {
     stDatosComida aux;
     FILE*archi=fopen("ArchivoComidas.bin","rb");
@@ -676,4 +676,38 @@ nodoComida *ModificarPrecioLista(nodoComida *lista, float valor)
         }
     }
     return aux;
+}
+
+
+void persistirArchivoComidas(CatComida arreglo[], int validos)
+{
+    stDatosComida auxiliar;
+    FILE *buffer = fopen("ArchivoComidas.bin", "wb");
+    if(buffer)
+    {
+        for(int i=0; i<validos; i++)
+        {
+            while(arreglo[i].lista != NULL)
+            {
+                auxiliar=cargarComida(arreglo[i].dato, arreglo[i].lista);
+                fwrite(&auxiliar,sizeof(stDatosComida), 1, buffer);
+                arreglo[i].lista= arreglo[i].lista->siguiente;
+            }
+        }
+        fclose(buffer);
+    }
+
+}
+
+stDatosComida cargarComida(categoria dato, nodoComida *lista)
+{
+    stDatosComida aux;
+    aux.id_categoria = dato.id_categoria;
+    strcpy(aux.nombre_cat, dato.nombre_cat);
+    strcpy(aux.nombre, lista->dato.nombre);
+    aux.id = lista->dato.id;
+    aux.precio = lista->dato.precio;
+
+    return aux;
+
 }
