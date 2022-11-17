@@ -459,7 +459,6 @@ void menuAdministrador()
 
     do
     {
-<<<<<<< HEAD
         printf("\nElija una opcion\n1:Productos\n2:Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionUsuario);
@@ -498,8 +497,7 @@ void menuAdministrador()
             system("cls");
             break;
         }
-=======
-        printf("\nElija una opcion\n1:ABM Productos\n2:ABM Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal\n");
+    printf("\nElija una opcion\n1:ABM Productos\n2:ABM Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal\n");
     fflush(stdin);
     scanf("%i", &opcionUsuario);
     switch(opcionUsuario)
@@ -527,10 +525,9 @@ void menuAdministrador()
         Sleep(700);
         system("cls");
         break;
->>>>>>> 244143b2bcb7261dcb45f6883f7ba5d570602c6a
     }
-    while(opcionUsuario!=0);
 
+    }while(opcionUsuario!=0);
 }
 
 void adminProductos()

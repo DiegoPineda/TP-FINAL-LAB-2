@@ -36,7 +36,7 @@
 	<stdlib.h>
 	<string.h>
 
-1668652028 c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.h
+1668719356 c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.h
 
 1668651007 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
 	"comida.h"
@@ -45,7 +45,7 @@
 1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
 	"postres.h"
 
-1668652222 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
+1668719567 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
 	<stdio.h>
 	<stdlib.h>
 	"windows.h"
@@ -55,6 +55,7 @@
 	"postres.h"
 	"bebidas.h"
 	"loginYMenu.h"
+	"arbol.h"
 
 1668627511 c:\users\diego\desktop\tp final\tp-final-lab-2\main.c
 	<stdio.h>
@@ -129,6 +130,16 @@
 	"arbol.h"
 
 1668715690 e:\users\seba\documents\github\tp-final-lab-2\arbol.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"loginYMenu.h"
+
+1668719356 source:c:\users\diego\desktop\tp final\tp-final-lab-2\arbol.c
+	"loginYMenu.h"
+	"arbol.h"
+
+1668719356 c:\users\diego\desktop\tp final\tp-final-lab-2\arbol.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
