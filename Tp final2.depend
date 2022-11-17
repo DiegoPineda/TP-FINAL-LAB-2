@@ -1,17 +1,17 @@
 # depslib dependency file v1.0
-1668627905 source:c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.c
+1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.c
 	"bebidas.h"
 
-1668623422 c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.h
+1668640788 c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1668627905 source:c:\users\diego\desktop\tp final\tp-final-lab-2\comida.c
+1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\comida.c
 	"comida.h"
 	"pedido.h"
 
-1668623422 c:\users\diego\desktop\tp final\tp-final-lab-2\comida.h
+1668640788 c:\users\diego\desktop\tp final\tp-final-lab-2\comida.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -31,7 +31,7 @@
 	"bebidas.h"
 	"loginYMenu.h"
 
-1668623422 c:\users\diego\desktop\tp final\tp-final-lab-2\postres.h
+1668640788 c:\users\diego\desktop\tp final\tp-final-lab-2\postres.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -42,10 +42,10 @@
 	"comida.h"
 	"pedido.h"
 
-1668627905 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
+1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
 	"postres.h"
 
-1668629261 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
+1668648439 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
 	<stdio.h>
 	<stdlib.h>
 	"windows.h"

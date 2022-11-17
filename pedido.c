@@ -148,9 +148,14 @@ pedidoCelda *hacerPedido(CatComida arreglo[],  int validos,pedidoCelda *lista) /
 
     do
     {
+
+        printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,187);
+        printf("\n\t\t\t\t%cCARRITO%c",186,186);
+        printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,188);
         printf("1.Ingresar producto\n2.Modificar producto\n3.Eliminar producto\n9.Realizar pedido\n0.Salir\n");
         fflush(stdin);
         scanf("%i",&elecc);
+
         switch(elecc)
         {
         case 1:
@@ -263,7 +268,7 @@ void mostrarItem(pedido p)
 
 void mostrarUnPedido(pedidoCelda *lista,int idpedido)
 {
-    while(lista->user.idpedido!=idpedido)
+    while(lista->user.idpedido!=idpedido && lista!=NULL)
     {
         lista=lista->sig;
     }
