@@ -10,6 +10,7 @@
 #include "postres.h"
 #include "bebidas.h"
 #include "loginYMenu.h"
+#include "arbol.h"
 const int adminPass = 1234;
 
 
@@ -20,7 +21,7 @@ CatComida Categorias[10];
 CeldaPostre Categoriaspos[10];
 CeldaBebida CategoriasBeb[10];
 pedidoCelda *listaPedidoCelda;
-
+nodoArbol *listaClientes;
 int main()
 {
 
@@ -28,6 +29,8 @@ int main()
     validosBebida = leerArvchivoBebida(CategoriasBeb, 10);
     validosPostre = leerArvchivoPostres(Categoriaspos, 10);
     listaPedidoCelda=inicLista();
+    listaClientes = inicArbol();
+    listaClientes = leerArvchivoClientes(listaClientes);
     menuPrincipal();
 
 
@@ -40,17 +43,13 @@ int main()
 }
 
 
-
-
-
-
 void menuPrincipal()
 {
     system("cls");
     int opcionMenu = 0;
     int usuarioValido = -1;
     int admin = -1;
-    char dni[8];
+    char dni[9];
     char pass[20];
     do
     {
@@ -449,43 +448,53 @@ void menuUsuario()
 
 void menuAdministrador()
 {
-        printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
-        printf("\n\t\t\t\t%cMENU ADMINISTRADOR%c",186,186);
-        printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+    printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+    printf("\n\t\t\t\t%cMENU ADMINISTRADOR%c",186,186);
+    printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
     int opcionUsuario;
 
     do
     {
         printf("\nElija una opcion\n1:Productos\n2:Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal\n");
-    fflush(stdin);
-    scanf("%i", &opcionUsuario);
-    switch(opcionUsuario)
-    {
-    case 1:
-        ///FUNCION MOSTRAR PRODUCTOS
-        adminProductos();
-        break;
-    case 2:
-        ///FUNCION HACER UN NUEVO PEDIDO
-        seraRedirigidoAlMenuUsuario();
-        menuUsuario();
-        break;
-    case 3:
-        ///FUNCION CANCELAR UN PEDIDO
-        seraRedirigidoAlMenuUsuario;
-        menuUsuario();
-        break;
-    case 0:
-        seraRedirigidoAlMenuPrincipal;
-        menuPrincipal();
-        break;
-    default:
-        printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
-        Sleep(700);
-        system("cls");
-        break;
+        fflush(stdin);
+        scanf("%i", &opcionUsuario);
+        switch(opcionUsuario)
+        {
+        case 1:
+            ///FUNCION MOSTRAR PRODUCTOS
+            adminProductos();
+            break;
+        case 2:
+            ///FUNCION HACER UN NUEVO PEDIDO
+            seraRedirigidoAlMenuUsuario();
+            menuUsuario();
+            break;
+        case 3:
+            ///FUNCION CANCELAR UN PEDIDO
+            seraRedirigidoAlMenuUsuario;
+            menuUsuario();
+            break;
+        case 5:
+            inorder(listaClientes);
+            listaClientes = bajaLogicaCliente(listaClientes);
+            system("pause");
+            system("cls");
+            inorder(listaClientes);
+            system("pause");
+            system("cls");
+            break;
+        case 0:
+            seraRedirigidoAlMenuPrincipal;
+            menuPrincipal();
+            break;
+        default:
+            printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
+            Sleep(700);
+            system("cls");
+            break;
+        }
     }
-    }while(opcionUsuario!=0);
+    while(opcionUsuario!=0);
 
 }
 

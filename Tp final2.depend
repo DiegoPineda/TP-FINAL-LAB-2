@@ -66,3 +66,71 @@
 	"bebidas.h"
 	"loginYMenu.h"
 
+1668641096 source:e:\users\seba\documents\github\tp-final-lab-2\bebidas.c
+	"bebidas.h"
+
+1668633960 e:\users\seba\documents\github\tp-final-lab-2\bebidas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668640261 source:e:\users\seba\documents\github\tp-final-lab-2\comida.c
+	"comida.h"
+	"pedido.h"
+
+1668633765 e:\users\seba\documents\github\tp-final-lab-2\comida.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668484640 e:\users\seba\documents\github\tp-final-lab-2\pedido.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668641446 source:e:\users\seba\documents\github\tp-final-lab-2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"pedido.h"
+	"postres.h"
+	"bebidas.h"
+	"loginYMenu.h"
+
+1668634750 e:\users\seba\documents\github\tp-final-lab-2\postres.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668712272 e:\users\seba\documents\github\tp-final-lab-2\loginymenu.h
+
+1668651422 source:e:\users\seba\documents\github\tp-final-lab-2\pedido.c
+	"comida.h"
+	"pedido.h"
+
+1668641372 source:e:\users\seba\documents\github\tp-final-lab-2\postres.c
+	"postres.h"
+
+1668717740 source:e:\users\seba\documents\github\tp-final-lab-2\loginymenu.c
+	<stdio.h>
+	<stdlib.h>
+	"windows.h"
+	"conio.h"
+	"comida.h"
+	"pedido.h"
+	"postres.h"
+	"bebidas.h"
+	"loginYMenu.h"
+	"arbol.h"
+
+1668717641 source:e:\users\seba\documents\github\tp-final-lab-2\arbol.c
+	"loginYMenu.h"
+	"arbol.h"
+
+1668715690 e:\users\seba\documents\github\tp-final-lab-2\arbol.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"loginYMenu.h"
+
