@@ -10,8 +10,6 @@
 #include "postres.h"
 #include "bebidas.h"
 #include "loginYMenu.h"
-#include "main.c"
-
 const int adminPass = 1234;
 
 
@@ -145,10 +143,8 @@ void RegistrarUsuario()
     gets(a.dni);
 
     flagValidacion = verificarDni(a.dni);
-    system("pause");
     if(flagValidacion == 0)
     {
-        system("pause");
         printf("\n\t Nombre y apellido : ");
         fflush(stdin);
         gets(a.nombreYApellido);

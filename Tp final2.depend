@@ -38,14 +38,14 @@
 
 1668627245 c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.h
 
-1668484846 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
+1668651007 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
 	"comida.h"
 	"pedido.h"
 
 1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
 	"postres.h"
 
-1668648439 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
+1668651007 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
 	<stdio.h>
 	<stdlib.h>
 	"windows.h"
@@ -55,7 +55,6 @@
 	"postres.h"
 	"bebidas.h"
 	"loginYMenu.h"
-	"main.c"
 
 1668627511 c:\users\diego\desktop\tp final\tp-final-lab-2\main.c
 	<stdio.h>

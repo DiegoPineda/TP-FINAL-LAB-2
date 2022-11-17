@@ -250,6 +250,7 @@ void mostrarListaPedidos(pedidoCelda *lista)
 void mostrarListaItems(nodoPedido *lista)
 {
     int i=1;
+
     while(lista!=NULL)
     {
         printf("%i. ",i);
@@ -272,6 +273,7 @@ void mostrarUnPedido(pedidoCelda *lista,int idpedido)
     {
         lista=lista->sig;
     }
+    printf("DNI: %s\nID Pedido: %i\n",lista->user.dni,lista->user.idpedido);
     mostrarListaItems(lista->listaPedidos);
 }
 
