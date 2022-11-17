@@ -50,7 +50,7 @@ void menuPrincipal()
     int opcionMenu = 0;
     int usuarioValido = -1;
     int admin = -1;
-    char dni[8];
+    char dni[9];
     char pass[20];
     do
     {
@@ -116,6 +116,7 @@ void menuPrincipal()
 
         case 0:
         {
+            return 0;
             break;
         }
 
@@ -279,9 +280,9 @@ int verificarUsuario(char dni[],char pass[])
     {
         while(fread(&a,sizeof(cliente),1,pArchUsuarios)>0)
         {
-            if(strcmp(a.dni,dni) == 0)
+            if(strcmpi(a.dni,dni) == 0)
             {
-                if(strcmp(a.pass,pass)==0)
+                if(strcmpi(a.pass,pass)==0)
                 {
                     if(a.baja == 0)
                     {
@@ -413,7 +414,7 @@ void menuUsuario()
         printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,187);
         printf("\n\t\t\t\t%cMENU USUARIO%c",186,186);
         printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,188);
-        printf("\nElija una opcion\n1.Ver catalogo de productos\n2.Hacer un nuevo pedido\n3.Modificar un pedido\n4.Cancelar un pedido\n0.Volver al menu principal\n");
+        printf("\nElija una opcion\n1.Ver catalogo de productos\n2.Hacer un nuevo pedido\n3.Modificar un pedido\n4.Cancelar un pedido\n5.Dejar una sugerencia\n0.Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionUsuario);
         switch(opcionUsuario)
@@ -436,6 +437,9 @@ void menuUsuario()
         case 4:
             ///CANCELAR UN PEDIDO
             break;
+        case 5:
+            ///DEJAR UNA SUGERENCIA
+            break;
         case 0:
             break;
         default:
@@ -456,7 +460,7 @@ void menuAdministrador()
 
     do
     {
-        printf("\nElija una opcion\n1:Productos\n2:Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal\n");
+        printf("\nElija una opcion\n1:ABM Productos\n2:ABM Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal\n");
     fflush(stdin);
     scanf("%i", &opcionUsuario);
     switch(opcionUsuario)
