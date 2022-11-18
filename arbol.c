@@ -1,5 +1,6 @@
 #include "loginYMenu.h"
 #include "arbol.h"
+#include "string.h"
 
 
 nodoArbol *inicArbol()
@@ -103,4 +104,87 @@ nodoArbol *bajaLogicaCliente(nodoArbol *arbol)
         nodoBuscado->dato.baja=1;
     }
     return arbol;
+}
+
+nodoArbol *modificarCliente(nodoArbol *arbol)
+{
+    char dni[10];
+    int modificacion;
+   // system("cls");
+    printf("\n\tMODIFICAR UN CLIENTE\n");
+    if(usuarioLogeado.admin == 1)
+    {
+        printf("Ingrese el DNI del cliente: ");
+        fflush(stdin);
+        gets(dni);
+    }
+    else
+    {
+        strcpy(dni, usuarioLogeado.dni);
+    }
+
+    nodoArbol *nodoBuscado = busqueda(arbol, dni);
+    if(nodoBuscado != NULL)
+    {
+        printf("\nEste es el cliente: ");
+        printf("\n---------------------------------");
+        mostrarUnCliente(nodoBuscado);
+        printf("\n---------------------------------\n");
+        printf("\nQue desea modificar?\n1.Nombre y apellido\n2.Calle y altura\n3.Contrasenia\n4.Telefono\nIngrese una opcion: ");
+        fflush(stdin);
+        scanf("%d", &modificacion);
+        if(modificacion == 1)
+        {
+            printf("\nIngrese nuevo nombre y apellido: ");
+            fflush(stdin);
+            scanf("%s", &arbol->dato.nombreYApellido);
+        }
+        if(modificacion == 2)
+        {
+            printf("\nIngrese nuevo domicilio: ");
+            fflush(stdin);
+            scanf("%s", &arbol->dato.calleYAltura);
+        }
+        if(modificacion == 3)
+        {
+            printf("\nIngrese nueva contrasenia: ");
+            fflush(stdin);
+            scanf("%s", &arbol->dato.pass);
+        }
+        if(modificacion == 4)
+        {
+            printf("\nIngrese nuevo telefono: ");
+            fflush(stdin);
+            scanf("%s", &arbol->dato.telefono);
+        }
+        sobreEscribirArchivo(arbol);
+
+    }
+    return arbol;
+}
+
+void sobreEscribirArchivo(nodoArbol *arbol)
+{
+    cliente a;
+    FILE * archi = fopen("usuarios.dat", "wb");
+    cargarClienteRec(arbol, archi);
+    fclose(archi);
+}
+void mostrarUnCliente(nodoArbol * arbol)
+{
+    printf("\nNombre y apellido: %s", arbol->dato.nombreYApellido);
+    printf("\nDNI: %s", arbol->dato.dni);
+    printf("\nTelefono: %s", arbol->dato.telefono);
+    printf("\nDireccion: %s", arbol->dato.calleYAltura);
+    printf("\nContrasenia: %s", arbol->dato.pass);
+}
+
+void cargarClienteRec(nodoArbol* arbol, FILE* archi)
+{
+    if(arbol!=NULL)
+    {
+        fwrite(&arbol->dato, sizeof(cliente), 1, archi);
+        cargarClienteRec(arbol->der, archi);
+        cargarClienteRec(arbol->izq, archi);
+    }
 }
