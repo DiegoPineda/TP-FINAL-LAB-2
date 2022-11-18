@@ -507,4 +507,3 @@ pedidoCelda *borrarUNpedido(pedidoCelda *lista, char dni[])
 }
 
 
-

@@ -449,7 +449,7 @@ void menuAdministrador()
 
     do
     {
-        printf("\nElija una opcion\n1:Productos\n2:Hacer pedido\n3:Dar de baja usuario\n4:Mostrar lista de clientes\n0:Volver al menu principal\n");
+        printf("\nElija una opcion\n1:Productos\n2:Dar de baja usuario\n3:Mostrar lista de clientes\n0:Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionAdmin);
         switch(opcionAdmin)
@@ -459,11 +459,6 @@ void menuAdministrador()
             adminProductos();
             break;
         case 2:
-            ///FUNCION HACER UN NUEVO PEDIDO
-            listaPedidoCelda=hacerPedido(Categorias,CategoriasBeb,Categoriaspos,validos,validosBebida,validosPostre);
-            seraRedirigidoAlMenuUsuario();
-            break;
-        case 3:
             inorder(listaClientes);
             listaClientes = bajaLogicaCliente(listaClientes);
             system("pause");
@@ -472,7 +467,7 @@ void menuAdministrador()
             system("pause");
             system("cls");
             break;
-        case 4:
+        case 3:
             inorder(listaClientes);
             break;
         case 0:
@@ -563,18 +558,18 @@ void elegirMenu()
     if(opcionMenu == 1)
     {
         system("cls");
-        mostrarArchiComidas();
+        mostrarArregloComidas(Categorias, validos);
     }
 
     else if(opcionMenu == 2)
     {
         system("cls");
-        mostrarArchiBebida();
+        mostrarArregloBebidas(CategoriasBeb, validosBebida);
     }
 
     else if(opcionMenu == 3)
     {
         system("cls");
-        mostrarArchivoPos();
+        mostrarArregloPostres(Categoriaspos, validosPostre);
     }
 }

@@ -78,7 +78,7 @@ nodoArbol *busqueda(nodoArbol *arbol, char dni[])
         }
         else
         {
-            if(strcmp(dni, arbol->dato.dni) >0)
+            if(strcmp(arbol->dato.dni, dni) >0)
             {
                 auxiliar=busqueda(arbol->der, dni);
             }
@@ -113,13 +113,16 @@ nodoArbol *modificarCliente(nodoArbol *arbol)
     int modificacion = 0;
     int flag = 0;
     system("cls");
-    inorder(arbol);
     printf("\n\tMODIFICAR UN CLIENTE\n");
     flag = verificarDni(usuarioLogeado.dni);
     if(flag == 1)
     {
 
         nodoArbol *nodoBuscado = busqueda(arbol, usuarioLogeado.dni);
+        if(nodoBuscado == NULL)
+        {
+            printf("hola");
+        }
         if(nodoBuscado != NULL)
         {
             printf("\nEste es el cliente: ");
@@ -141,25 +144,25 @@ nodoArbol *modificarCliente(nodoArbol *arbol)
                 {
                     printf("\nIngrese nuevo nombre y apellido: ");
                     fflush(stdin);
-                    scanf("%s", &arbol->dato.nombreYApellido);
+                    scanf("%s", &nodoBuscado->dato.nombreYApellido);
                 }
                 if(modificacion == 2)
                 {
                     printf("\nIngrese nuevo domicilio: ");
                     fflush(stdin);
-                    scanf("%s", &arbol->dato.calleYAltura);
+                    scanf("%s", &nodoBuscado->dato.calleYAltura);
                 }
                 if(modificacion == 3)
                 {
                     printf("\nIngrese nueva contrasenia: ");
                     fflush(stdin);
-                    scanf("%s", &arbol->dato.pass);
+                    scanf("%s", &nodoBuscado->dato.pass);
                 }
                 if(modificacion == 4)
                 {
                     printf("\nIngrese nuevo telefono: ");
                     fflush(stdin);
-                    scanf("%s", &arbol->dato.telefono);
+                    scanf("%s", &nodoBuscado->dato.telefono);
                 }
                 do
                 {

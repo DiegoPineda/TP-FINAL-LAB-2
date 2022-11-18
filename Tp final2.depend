@@ -153,3 +153,80 @@
 	"pedido.h"
 	"loginYMenu.h"
 
+1668774041 source:c:\users\usuario\desktop\tp-final-lab-2\bebidas.c
+	"bebidas.h"
+
+1668774041 c:\users\usuario\desktop\tp-final-lab-2\bebidas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668774041 source:c:\users\usuario\desktop\tp-final-lab-2\comida.c
+	"comida.h"
+	"pedido.h"
+
+1668774041 c:\users\usuario\desktop\tp-final-lab-2\comida.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668774041 c:\users\usuario\desktop\tp-final-lab-2\pedido.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"bebidas.h"
+	"postres.h"
+
+1668774041 c:\users\usuario\desktop\tp-final-lab-2\postres.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1668786185 source:c:\users\usuario\desktop\tp-final-lab-2\loginymenu.c
+	<stdio.h>
+	<stdlib.h>
+	"windows.h"
+	"conio.h"
+	"comida.h"
+	"pedido.h"
+	"postres.h"
+	"bebidas.h"
+	"loginYMenu.h"
+	"arbol.h"
+
+1668774041 c:\users\usuario\desktop\tp-final-lab-2\loginymenu.h
+	"pedido.h"
+	"comida.h"
+
+1668774041 c:\users\usuario\desktop\tp-final-lab-2\arbol.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"loginYMenu.h"
+
+1668774041 source:c:\users\usuario\desktop\tp-final-lab-2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"pedido.h"
+	"postres.h"
+	"bebidas.h"
+	"loginYMenu.h"
+
+1668774041 source:c:\users\usuario\desktop\tp-final-lab-2\postres.c
+	"postres.h"
+
+1668785816 source:c:\users\usuario\desktop\tp-final-lab-2\arbol.c
+	"loginYMenu.h"
+	"arbol.h"
+	"string.h"
+
+1668784188 source:c:\users\usuario\desktop\tp-final-lab-2\pedido.c
+	"comida.h"
+	"bebidas.h"
+	"postres.h"
+	"pedido.h"
+	"loginYMenu.h"
+
