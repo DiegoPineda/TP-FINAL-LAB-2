@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "comida.h"
+#include "bebidas.h"
+#include "postres.h"
 
 
 typedef struct{
@@ -51,7 +53,7 @@ nodoPedido *inicListaPedidos();
 pedidoCelda *agregarPpioCeldaPedido(pedidoCelda *lista,pedidoCelda *pos);
 nodoPedido *agregarFinalPedidos(nodoPedido *lista,nodoPedido *nuevoNodo);
 nodoPedido *buscarUltimoPedido (nodoPedido *lista);
-void *hacerPedido(CatComida arreglo[],  int validos);
+void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Categoriaspos[],  int validos,int validosBebida,int validosPostre);
 void mostrarListaPedidos(pedidoCelda *lista);
 void mostrarItemPedidos(pedido *pedido);
 pedidoCelda *BuscarPedidoPorDNI(pedidoCelda *pedidos, char dni[]);
