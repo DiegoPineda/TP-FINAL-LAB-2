@@ -1,5 +1,7 @@
 #ifndef LOGINYMENU_H_INCLUDED
 #define LOGINYMENU_H_INCLUDED
+#include "pedido.h"
+#include "comida.h"
 typedef struct
 {
     char nombreYApellido[30];
@@ -11,7 +13,8 @@ typedef struct
     int baja;
 } cliente;
 
-
+pedidoCelda *listaPedidoCelda;
+cliente usuarioLogeado;
 
 void menuPrincipal();
 void RegistrarUsuario();

@@ -21,6 +21,10 @@ CeldaPostre Categoriaspos[10];
 CeldaBebida CategoriasBeb[10];
 pedidoCelda *listaPedidoCelda;
 nodoArbol *listaClientes;
+
+
+
+
 int main()
 {
 
@@ -28,15 +32,10 @@ int main()
     validosBebida = leerArvchivoBebida(CategoriasBeb, 10);
     validosPostre = leerArvchivoPostres(Categoriaspos, 10);
     listaPedidoCelda=inicLista();
+    listaPedidoCelda=leerPedidos(listaPedidoCelda);
     listaClientes = inicArbol();
     listaClientes = leerArvchivoClientes(listaClientes);
     menuPrincipal();
-
-
-//
-
-
-//    mostrarListaPedidos(lista);
 
     return 0;
 }
@@ -284,6 +283,7 @@ int verificarUsuario(char dni[],char pass[])
                     if(a.baja == 0)
                     {
                         flag = 1;
+                        usuarioLogeado=a;
                     }
                 }
                 if(flag==1)
@@ -411,7 +411,7 @@ void menuUsuario()
         printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,187);
         printf("\n\t\t\t\t%cMENU USUARIO%c",186,186);
         printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,188);
-        printf("\nElija una opcion\n1.Ver catalogo de productos\n2.Hacer un nuevo pedido\n3.Modificar un pedido\n4.Cancelar un pedido\n5.Dejar una sugerencia\n0.Volver al menu principal\n");
+        printf("\nElija una opcion\n1.Ver catalogo de productos\n2.Hacer un nuevo pedido\n3.Modificar un pedido\n4.Cancelar un pedido\n5.Ver mis pedidos\n6.Dejar una sugerencia\n0.Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionUsuario);
         switch(opcionUsuario)
@@ -422,7 +422,7 @@ void menuUsuario()
         case 2:
             ///FUNCION HACER UN NUEVO PEDIDO
             system("cls");
-            listaPedidoCelda=hacerPedido(Categorias,validos,listaPedidoCelda);
+            listaPedidoCelda=hacerPedido(Categorias,validos);
             system("cls");
 
             break;
@@ -433,6 +433,11 @@ void menuUsuario()
             ///CANCELAR UN PEDIDO
             break;
         case 5:
+            ///Ver mis pedidos
+            system("cls");
+            mostrarListaPedidos(listaPedidoCelda);
+            break;
+        case 6:
             ///DEJAR UNA SUGERENCIA
             break;
         case 0:
@@ -467,7 +472,7 @@ void menuAdministrador()
             break;
         case 2:
             ///FUNCION HACER UN NUEVO PEDIDO
-            listaPedidoCelda=hacerPedido(Categorias,validos,listaPedidoCelda);
+            listaPedidoCelda=hacerPedido(Categorias,validos);
             seraRedirigidoAlMenuUsuario();
             menuUsuario();
             break;

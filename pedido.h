@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "comida.h"
 
 
 typedef struct{
@@ -50,7 +51,7 @@ nodoPedido *inicListaPedidos();
 pedidoCelda *agregarPpioCeldaPedido(pedidoCelda *lista,pedidoCelda *pos);
 nodoPedido *agregarFinalPedidos(nodoPedido *lista,nodoPedido *nuevoNodo);
 nodoPedido *buscarUltimoPedido (nodoPedido *lista);
-pedidoCelda *hacerPedido(CatComida arreglo[],  int validos,pedidoCelda *lista);
+void *hacerPedido(CatComida arreglo[],  int validos);
 void mostrarListaPedidos(pedidoCelda *lista);
 void mostrarItemPedidos(pedido *pedido);
 pedidoCelda *BuscarPedidoPorDNI(pedidoCelda *pedidos, char dni[]);
@@ -58,7 +59,8 @@ pedidoCelda *borrarNodoPedido(pedidoCelda *lista, int id);
 nodoPedido *borrarNodoProducto(nodoPedido *lista, char nombre[]);
 pedidoCelda *borrarUNpedido(pedidoCelda *lista, char dni[]);
 
-
+void *subirPedido(int idpedido);
+void subirPedidoAux(nodoPedido *lista,int idpedido,float costeTotal);
 
 #endif // PEDIDOS_H_INCLUDED
 
