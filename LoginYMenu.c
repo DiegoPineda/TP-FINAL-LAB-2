@@ -160,9 +160,9 @@ void RegistrarUsuario()
         fflush(stdin);
         gets(a.telefono);
 
-        guardarUsuario(a);
         nodoArbol * nuevo = crearNodoArbol(a);
         listaClientes = insertar(listaClientes, nuevo);
+        sobreEscribirArchivo(listaClientes);
         printf("\n\nUsuario creado exitosamente");
         seraRedirigidoAlMenuPrincipal();
     }
@@ -173,15 +173,6 @@ void RegistrarUsuario()
     }
 }
 
-void guardarUsuario(cliente a)
-{
-    FILE * pArchUsuarios = fopen("usuarios.dat","ab");
-    if(pArchUsuarios!=NULL)
-    {
-        fwrite(&a,sizeof(cliente),1,pArchUsuarios);
-        fclose(pArchUsuarios);
-    }
-}
 
 int verificarDni(char dni[])
 {
@@ -291,12 +282,7 @@ int verificarUsuario(char dni[],char pass[])
                         usuarioLogeado = a;
                     }
                 }
-                if(flag==1)
-                {
-                    return 1;
-                }
-                else
-                    return -1;
+                return flag;
             }
         }
     }
@@ -389,10 +375,9 @@ void RegistrarAdministrador()
             fflush(stdin);
             gets(a.telefono);
 
-
-            guardarUsuario(a);
             nodoArbol * nuevo = crearNodoArbol(a);
             listaClientes = insertar(listaClientes, nuevo);
+            sobreEscribirArchivo(listaClientes);
             printf("\n\nUsuario de administrador creado exitosamente");
             seraRedirigidoAlMenuPrincipal();
         }
@@ -499,6 +484,7 @@ void menuAdministrador()
             break;
         case 5:
             listaClientes = modificarCliente(listaClientes);
+            break;
         case 0:
 
             seraRedirigidoAlMenuPrincipal();

@@ -76,7 +76,7 @@
 	"pedido.h"
 	"loginYMenu.h"
 
-1668757602 source:c:\users\santi\onedrive\documents\github\tp-final-lab-2\arbol.c
+1668762103 source:c:\users\santi\onedrive\documents\github\tp-final-lab-2\arbol.c
 	"loginYMenu.h"
 	"arbol.h"
 	"string.h"
@@ -85,7 +85,7 @@
 	"pedido.h"
 	"comida.h"
 
-1668758275 c:\users\santi\onedrive\documents\github\tp-final-lab-2\pedido.h
+1668759554 c:\users\santi\onedrive\documents\github\tp-final-lab-2\pedido.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -108,7 +108,7 @@
 	<stdlib.h>
 	<string.h>
 
-1668756940 c:\users\santi\onedrive\documents\github\tp-final-lab-2\arbol.h
+1668760414 c:\users\santi\onedrive\documents\github\tp-final-lab-2\arbol.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -121,7 +121,7 @@
 	"comida.h"
 	"pedido.h"
 
-1668757709 source:c:\users\santi\onedrive\documents\github\tp-final-lab-2\loginymenu.c
+1668763578 source:c:\users\santi\onedrive\documents\github\tp-final-lab-2\loginymenu.c
 	<stdio.h>
 	<stdlib.h>
 	"windows.h"
@@ -146,7 +146,7 @@
 1668729975 source:c:\users\santi\onedrive\documents\github\tp-final-lab-2\postres.c
 	"postres.h"
 
-1668758275 source:c:\users\santi\onedrive\documents\github\tp-final-lab-2\pedido.c
+1668762170 source:c:\users\santi\onedrive\documents\github\tp-final-lab-2\pedido.c
 	"comida.h"
 	"bebidas.h"
 	"postres.h"

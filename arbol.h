@@ -22,6 +22,6 @@ nodoArbol *busqueda(nodoArbol *arbol, char dni[]);
 nodoArbol *bajaLogicaCliente(nodoArbol *arbol);
 nodoArbol *modificarCliente(nodoArbol *arbol);
 void modificarClienteEnArchivo(cliente a);
-void mostrarUnCliente(nodoArbol * arbol);
+void mostrarUnCliente(cliente a);
 
 #endif // ARBOL_H_INCLUDED
