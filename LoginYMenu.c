@@ -91,7 +91,6 @@ void menuPrincipal()
             {
                 printf("\n\tUsuario no encontrado, sera redirigido al menu principal...");
                 system("pause");
-                menuPrincipal();
             }
         break;
         }
@@ -100,7 +99,7 @@ void menuPrincipal()
         {
             system("cls");
             RegistrarUsuario();
-            menuPrincipal();
+            system("cls");
             break;
         }
 
@@ -108,7 +107,7 @@ void menuPrincipal()
         {
             system("cls");
             RegistrarAdministrador();
-            menuPrincipal();
+            system("cls");
             break;
         }
 
@@ -535,7 +534,6 @@ void adminProductos()
         case 0:
             {
                 system("cls");
-                menuPrincipal();
                 break;
             }
         default:
