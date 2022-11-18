@@ -110,13 +110,19 @@ nodoArbol *modificarCliente(nodoArbol *arbol)
 {
     char dni[10];
     int modificacion;
+    int flag = 0;
    // system("cls");
     printf("\n\tMODIFICAR UN CLIENTE\n");
     if(usuarioLogeado.admin == 1)
     {
+        do
+        {
         printf("Ingrese el DNI del cliente: ");
         fflush(stdin);
         gets(dni);
+        flag = verificarDni(dni);
+        }while(flag == 0);
+
     }
     else
     {
