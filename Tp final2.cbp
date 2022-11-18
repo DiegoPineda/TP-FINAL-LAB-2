@@ -37,6 +37,7 @@
 		<Unit filename="arbol.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="arbol.h" />
 		<Unit filename="bebidas.c">
 			<Option compilerVar="CC" />
 		</Unit>
