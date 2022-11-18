@@ -13,7 +13,6 @@
 #include "arbol.h"
 const int adminPass = 1234;
 
-
 int validos;
 int validosBebida;
 int validosPostre;
@@ -438,6 +437,8 @@ void menuUsuario()
             ///DEJAR UNA SUGERENCIA
             break;
         case 0:
+            seraRedirigidoAlMenuPrincipal();
+            main();
             break;
         default:
             system("cls");
@@ -457,7 +458,7 @@ void menuAdministrador()
 
     do
     {
-        printf("\nElija una opcion\n1:Productos\n2:Usuarios\n3:Cancelar un pedido\n\n4:Dar de baja usuario\n0.Volver al menu principal\n");
+        printf("\nElija una opcion\n1:Productos\n2:Usuarios\n3:Cancelar un pedido\n4:Dar de baja usuario\n0:Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionUsuario);
         switch(opcionUsuario)
@@ -487,46 +488,18 @@ void menuAdministrador()
             system("cls");
             break;
         case 0:
-            seraRedirigidoAlMenuPrincipal;
-            menuPrincipal();
+
+            seraRedirigidoAlMenuPrincipal();
             break;
+
         default:
             printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
             Sleep(700);
             system("cls");
             break;
         }
-    printf("\nElija una opcion\n1:ABM Productos\n2:ABM Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal\n");
-    fflush(stdin);
-    scanf("%i", &opcionUsuario);
-    switch(opcionUsuario)
-    {
-    case 1:
-        ///FUNCION MOSTRAR PRODUCTOS
-        adminProductos();
-        break;
-    case 2:
-        ///FUNCION HACER UN NUEVO PEDIDO
-        seraRedirigidoAlMenuUsuario();
-        menuUsuario();
-        break;
-    case 3:
-        ///FUNCION CANCELAR UN PEDIDO
-        seraRedirigidoAlMenuUsuario;
-        menuUsuario();
-        break;
-    case 0:
-        seraRedirigidoAlMenuPrincipal;
-        menuPrincipal();
-        break;
-    default:
-        printf("\nEl numero ingresado no corresponde a ninguna de las opciones, ingrese nuevamente...\n\n");
-        Sleep(700);
-        system("cls");
-        break;
-    }
-
     }while(opcionUsuario!=0);
+    system("cls");
 }
 
 void adminProductos()
@@ -563,6 +536,7 @@ void adminProductos()
         case 0:
             {
                 system("cls");
+                menuPrincipal();
                 break;
             }
         default:
