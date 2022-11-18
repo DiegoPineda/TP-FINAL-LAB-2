@@ -53,15 +53,16 @@ nodoPedido *crearNodoPedido(char producto[],int cantidad, float precio)
 pedidoCelda *buscarPosCelda(pedidoCelda *listaCeldas, int idPedido)
 {
     pedidoCelda *pos=NULL;
+    pedidoCelda *seg=listaCeldas;
     int flag=0;
-    while (listaCeldas!=NULL && flag==0)
+    while (seg!=NULL && flag==0)
     {
-        if(listaCeldas->user.idpedido == idPedido)
+        if(seg->user.idpedido == idPedido)
         {
-            pos=listaCeldas;
+            pos=seg;
             flag=1;
         }
-        listaCeldas=listaCeldas->sig;
+        seg=seg->sig;
     }
     return pos;
 }
@@ -138,7 +139,7 @@ nodoPedido *buscarUltimoPedido (nodoPedido *lista)
 
 void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Categoriaspos[],  int validos,int validosBebida,int validosPostre) ///hacer una funcion que nos de un registropedido y ahi hacer el pedido++
 {
-    int elecc;
+    int elecc=0;
     int cate;
     registroPedido aux;
     strcpy(aux.dni,usuarioLogeado.dni); ///aca va la Variable global
@@ -158,7 +159,7 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
         printf("1.Ingresar producto\n2.Modificar producto\n3.Eliminar producto\n9.Realizar pedido\n0.Salir\n");
         fflush(stdin);
         scanf("%i",&elecc);
-        int tipo;
+        int tipo=0;
 
         switch(elecc)
         {
@@ -277,7 +278,7 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
         {
 
 
-            Npedidos++;
+            Npedidos+1;
             subirPedido(aux.idpedido);
             printf("Subir a archivo\n");
             break;

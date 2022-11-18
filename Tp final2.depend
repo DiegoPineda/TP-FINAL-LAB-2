@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1668758635 source:c:\users\diego\desktop\tp final\tp-final-lab-2\arbol.c
+1668759587 source:c:\users\diego\desktop\tp final\tp-final-lab-2\arbol.c
 	"loginYMenu.h"
 	"arbol.h"
 	"string.h"
@@ -69,7 +69,7 @@
 1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
 	"postres.h"
 
-1668759368 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
+1668760785 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
 	"comida.h"
 	"bebidas.h"
 	"postres.h"
