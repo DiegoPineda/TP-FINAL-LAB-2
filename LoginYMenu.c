@@ -438,7 +438,6 @@ void menuUsuario()
             break;
         case 0:
             seraRedirigidoAlMenuPrincipal();
-            main();
             break;
         default:
             system("cls");
@@ -446,7 +445,7 @@ void menuUsuario()
             break;
         }
     }while(opcionUsuario!=0);
-
+    system("cls");
 }
 
 void menuAdministrador()
