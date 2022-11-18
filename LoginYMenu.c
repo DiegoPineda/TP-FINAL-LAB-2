@@ -449,7 +449,7 @@ void menuAdministrador()
 
     do
     {
-        printf("\nElija una opcion\n1:Productos\n2:Hacer pedido\n3:Dar de baja usuario\n\n0:Volver al menu principal\n");
+        printf("\nElija una opcion\n1:Productos\n2:Hacer pedido\n3:Dar de baja usuario\n4:Mostrar lista de clientes\n0:Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionAdmin);
         switch(opcionAdmin)
@@ -472,8 +472,10 @@ void menuAdministrador()
             system("pause");
             system("cls");
             break;
+        case 4:
+            inorder(listaClientes);
+            break;
         case 0:
-
             seraRedirigidoAlMenuPrincipal();
             break;
 

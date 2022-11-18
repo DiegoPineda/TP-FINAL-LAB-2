@@ -72,13 +72,13 @@ nodoArbol *busqueda(nodoArbol *arbol, char dni[])
     nodoArbol *auxiliar =NULL;
     if(arbol != NULL)
     {
-        if(strcmpi(arbol->dato.dni, dni) == 0)
+        if(strcmp(arbol->dato.dni, dni) == 0)
         {
             auxiliar=arbol;
         }
         else
         {
-            if(strcmpi(dni, arbol->dato.dni) >0)
+            if(strcmp(dni, arbol->dato.dni) >0)
             {
                 auxiliar=busqueda(arbol->der, dni);
             }
@@ -113,13 +113,13 @@ nodoArbol *modificarCliente(nodoArbol *arbol)
     int modificacion = 0;
     int flag = 0;
     system("cls");
+    inorder(arbol);
     printf("\n\tMODIFICAR UN CLIENTE\n");
-    strcpy(dni, usuarioLogeado.dni);
-    flag = verificarDni(dni);
+    flag = verificarDni(usuarioLogeado.dni);
     if(flag == 1)
     {
 
-        nodoArbol *nodoBuscado = busqueda(arbol, dni);
+        nodoArbol *nodoBuscado = busqueda(arbol, usuarioLogeado.dni);
         if(nodoBuscado != NULL)
         {
             printf("\nEste es el cliente: ");
