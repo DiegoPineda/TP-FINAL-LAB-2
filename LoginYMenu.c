@@ -419,19 +419,17 @@ void menuUsuario()
         switch(opcionUsuario)
         {
         case 1:
-            ///FUNCION MOSTRAR PRODUCTOS
-
+            elegirMenu();
             break;
         case 2:
             ///FUNCION HACER UN NUEVO PEDIDO
             system("cls");
             listaPedidoCelda=hacerPedido(Categorias,validos,listaPedidoCelda);
+            system("cls");
 
             break;
         case 3:
             ///FUNCION MODIFICAR UN PEDIDO
-
-
             break;
         case 4:
             ///CANCELAR UN PEDIDO
@@ -459,7 +457,7 @@ void menuAdministrador()
 
     do
     {
-        printf("\nElija una opcion\n1:Productos\n2:Usuarios\n3:Cancelar un pedido\n4:Modificar productos\n5:Dar de baja usuario\n0.Volver al menu principal\n");
+        printf("\nElija una opcion\n1:Productos\n2:Usuarios\n3:Cancelar un pedido\n\n4:Dar de baja usuario\n0.Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionUsuario);
         switch(opcionUsuario)
@@ -470,6 +468,7 @@ void menuAdministrador()
             break;
         case 2:
             ///FUNCION HACER UN NUEVO PEDIDO
+            listaPedidoCelda=hacerPedido(Categorias,validos,listaPedidoCelda);
             seraRedirigidoAlMenuUsuario();
             menuUsuario();
             break;
@@ -478,7 +477,7 @@ void menuAdministrador()
             seraRedirigidoAlMenuUsuario;
             menuUsuario();
             break;
-        case 5:
+        case 4:
             inorder(listaClientes);
             listaClientes = bajaLogicaCliente(listaClientes);
             system("pause");
@@ -573,4 +572,45 @@ void adminProductos()
             }
         }
     }while(opcion!=0);
+}
+
+int devolverOpcionMenu()
+{
+    int opcionMenu;
+    printf("\nQue menu desea visualizar?\n1: Menu de comidas\n2: Menu de bebidas\n3: Menu de postres\n\t\t\t");
+    fflush(stdin);
+    scanf("%d", &opcionMenu);
+    return opcionMenu;
+}
+
+void elegirMenu()
+{
+            int opcionMenu = devolverOpcionMenu();
+            do
+            {
+                if(opcionMenu!=1 && opcionMenu!=2 && opcionMenu!=3)
+                {
+                    system("cls");
+                    printf("\nEl numero ingresado no corresponde a una de las opciones\nIngrese nuevamente\n");
+                    opcionMenu = devolverOpcionMenu();
+                }
+            }while(opcionMenu!=1 && opcionMenu!=2 && opcionMenu!=3);
+
+            if(opcionMenu == 1)
+            {
+            system("cls");
+            mostrarArchiComidas();
+            }
+
+            else if(opcionMenu == 2)
+            {
+                system("cls");
+            mostrarArchiBebida();
+            }
+
+            else if(opcionMenu == 3)
+            {
+                system("cls");
+            mostrarArchivoPos();
+            }
 }

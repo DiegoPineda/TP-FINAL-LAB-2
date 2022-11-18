@@ -28,5 +28,6 @@ void seraRedirigidoAlMenuUsuario();
 void RegistrarAdministrador();
 void menuUsuario();
 void menuAdministrador();
+int devolverOpcionMenu();
 
 #endif // LOGINYMENU_H_INCLUDED
