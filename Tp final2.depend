@@ -3,15 +3,17 @@
 	"loginYMenu.h"
 	"arbol.h"
 
-1668741862 c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.h
+1668750504 c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.h
 	"pedido.h"
 	"comida.h"
 
-1668742023 c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.h
+1668750771 c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"comida.h"
+	"bebidas.h"
+	"postres.h"
 
 1668640788 c:\users\diego\desktop\tp final\tp-final-lab-2\comida.h
 	<stdio.h>
@@ -36,7 +38,7 @@
 	"comida.h"
 	"pedido.h"
 
-1668743478 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
+1668750931 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
 	<stdio.h>
 	<stdlib.h>
 	"windows.h"
@@ -66,8 +68,10 @@
 1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
 	"postres.h"
 
-1668743369 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
+1668755197 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
 	"comida.h"
+	"bebidas.h"
+	"postres.h"
 	"pedido.h"
 	"loginYMenu.h"
 

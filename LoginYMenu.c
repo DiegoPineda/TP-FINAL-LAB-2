@@ -11,6 +11,7 @@
 #include "bebidas.h"
 #include "loginYMenu.h"
 #include "arbol.h"
+
 const int adminPass = 1234;
 
 int validos;
@@ -422,7 +423,7 @@ void menuUsuario()
         case 2:
             ///FUNCION HACER UN NUEVO PEDIDO
             system("cls");
-            listaPedidoCelda=hacerPedido(Categorias,validos);
+            listaPedidoCelda=hacerPedido(Categorias,CategoriasBeb,Categoriaspos,validos,validosBebida,validosPostre);
             system("cls");
 
             break;
@@ -472,7 +473,7 @@ void menuAdministrador()
             break;
         case 2:
             ///FUNCION HACER UN NUEVO PEDIDO
-            listaPedidoCelda=hacerPedido(Categorias,validos);
+            listaPedidoCelda=hacerPedido(Categorias,CategoriasBeb,Categoriaspos,validos,validosBebida,validosPostre);
             seraRedirigidoAlMenuUsuario();
             menuUsuario();
             break;
