@@ -268,9 +268,10 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
             printf("Ingrese la cantidad: \n");
             fflush(stdin);
             scanf("%i",&aux.cantidad);
-
+            printf("ID: %i   DNI: %s",aux.idpedido,aux.dni);
             listaPedidoCelda=altaPedidos(listaPedidoCelda,aux);
             system("cls");
+
             mostrarUnPedido(listaPedidoCelda,aux.idpedido);
             break;
         }
@@ -278,9 +279,11 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
         {
 
 
-            Npedidos+1;
+            Npedidos=Npedidos+1;
             subirPedido(aux.idpedido);
+
             printf("Subir a archivo\n");
+            system("pause");
             break;
         }
         case 0:
@@ -299,13 +302,14 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
 
 }
 
-void *subirPedido(int idpedido)
+void subirPedido(int idpedido)
 {
-        while(listaPedidoCelda->user.idpedido!=idpedido)
+    pedidoCelda *aux=listaPedidoCelda;
+        while(aux->user.idpedido!=idpedido)
         {
-            listaPedidoCelda->sig;
+            aux->sig;
         }
-    subirPedidoAux(listaPedidoCelda->listaPedidos,idpedido,listaPedidoCelda->user.costeTotal);
+    subirPedidoAux(aux->listaPedidos,idpedido,aux->user.costeTotal);
 }
 
 void subirPedidoAux(nodoPedido *lista,int idpedido,float costeTotal)
@@ -315,21 +319,23 @@ void subirPedidoAux(nodoPedido *lista,int idpedido,float costeTotal)
     strcpy(aux.dni,usuarioLogeado.dni);
     aux.idpedido=idpedido;
     aux.costeTotal=costeTotal;
+    nodoPedido *aux2=lista;
     if(buffer!=NULL)
     {
-        while(lista!=NULL)
+        while(aux2!=NULL)
         {
-            strcpy(aux.producto,lista->p.producto);
-            aux.cantidad=lista->p.cantidad;
-            aux.precio=lista->p.cantidad;
+            strcpy(aux.producto,aux2->p.producto);
+            aux.cantidad=aux2->p.cantidad;
+            aux.precio=aux2->p.cantidad;
             fwrite(&aux,sizeof(registroPedido),1,buffer);
-            lista=lista->sig;
+            aux2=aux2->sig;
         }
         fclose(buffer);
 
     }
 
 }
+
 
 
 
@@ -369,13 +375,13 @@ void mostrarItem(pedido p)
 
 void mostrarUnPedido(pedidoCelda *lista,int idpedido)
 {
-
-    while(lista->user.idpedido!=idpedido && lista!=NULL)
+    pedidoCelda *aux=lista;
+    while(aux->user.idpedido!=idpedido && aux!=NULL)
     {
-        lista=lista->sig;
+        aux=aux->sig;
     }
-    printf("DNI: %s\nID Pedido: %i\n",lista->user.dni,lista->user.idpedido);
-    mostrarListaItems(lista->listaPedidos);
+    printf("DNI: %s\nID Pedido: %i\n",aux->user.dni,aux->user.idpedido);
+    mostrarListaItems(aux->listaPedidos);
 }
 
 

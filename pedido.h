@@ -61,7 +61,7 @@ pedidoCelda *borrarNodoPedido(pedidoCelda *lista, int id);
 nodoPedido *borrarNodoProducto(nodoPedido *lista, char nombre[]);
 pedidoCelda *borrarUNpedido(pedidoCelda *lista, char dni[]);
 
-void *subirPedido(int idpedido);
+void subirPedido(int idpedido);
 void subirPedidoAux(nodoPedido *lista,int idpedido,float costeTotal);
 
 #endif // PEDIDOS_H_INCLUDED
