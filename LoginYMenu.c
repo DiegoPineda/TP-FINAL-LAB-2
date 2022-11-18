@@ -403,7 +403,7 @@ void menuUsuario()
         printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,187);
         printf("\n\t\t\t\t%cMENU USUARIO%c",186,186);
         printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,188);
-        printf("\nElija una opcion\n1.Ver catalogo de productos\n2.Hacer un nuevo pedido\n3.Modificar un pedido\n4.Cancelar un pedido\n5.Ver mis pedidos\n6.Modificar perfil\n0.Volver al menu principal\n");
+        printf("\nElija una opcion\n1.Ver catalogo de productos\n2.Hacer un nuevo pedido\n3.Ver mis pedidos\n4.Modificar perfil\n0.Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionUsuario);
         switch(opcionUsuario)
@@ -419,17 +419,11 @@ void menuUsuario()
 
             break;
         case 3:
-            ///FUNCION MODIFICAR UN PEDIDO
-            break;
-        case 4:
-            ///CANCELAR UN PEDIDO
-            break;
-        case 5:
             ///Ver mis pedidos
             system("cls");
             mostrarListaPedidos(listaPedidoCelda);
             break;
-        case 6:
+        case 4:
             ///Modificar perfil
             listaClientes = modificarCliente(listaClientes);
             break;
@@ -455,7 +449,7 @@ void menuAdministrador()
 
     do
     {
-        printf("\nElija una opcion\n1:Productos\n2:Hacer pedido\n3:Cancelar un pedido\n4:Dar de baja usuario\n5:Modificar cliente\n0:Volver al menu principal\n");
+        printf("\nElija una opcion\n1:Productos\n2:Hacer pedido\n3:Dar de baja usuario\n\n0:Volver al menu principal\n");
         fflush(stdin);
         scanf("%i", &opcionAdmin);
         switch(opcionAdmin)
@@ -470,10 +464,6 @@ void menuAdministrador()
             seraRedirigidoAlMenuUsuario();
             break;
         case 3:
-            ///FUNCION CANCELAR UN PEDIDO
-            seraRedirigidoAlMenuUsuario;
-            break;
-        case 4:
             inorder(listaClientes);
             listaClientes = bajaLogicaCliente(listaClientes);
             system("pause");
@@ -481,9 +471,6 @@ void menuAdministrador()
             inorder(listaClientes);
             system("pause");
             system("cls");
-            break;
-        case 5:
-            listaClientes = modificarCliente(listaClientes);
             break;
         case 0:
 
@@ -506,6 +493,7 @@ void adminProductos()
     int opcion;
     do
     {
+        system("cls");
         printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
         printf("\n\t\t\t\t%cABM PRODUCTOS%c",186,186);
         printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,188);

@@ -109,11 +109,11 @@ nodoArbol *bajaLogicaCliente(nodoArbol *arbol)
 nodoArbol *modificarCliente(nodoArbol *arbol)
 {
     char dni[10];
-    int modificacion;
+    char control = 's';
+    int modificacion = 0;
     int flag = 0;
     system("cls");
     printf("\n\tMODIFICAR UN CLIENTE\n");
-    printf("%d", usuarioLogeado.dni);
     strcpy(dni, usuarioLogeado.dni);
     flag = verificarDni(dni);
     if(flag == 1)
@@ -126,33 +126,51 @@ nodoArbol *modificarCliente(nodoArbol *arbol)
             printf("\n---------------------------------");
             mostrarUnCliente(nodoBuscado->dato);
             printf("\n---------------------------------\n");
-            printf("\nQue desea modificar?\n1.Nombre y apellido\n2.Calle y altura\n3.Contrasenia\n4.Telefono\nIngrese una opcion: ");
-            fflush(stdin);
-            scanf("%d", &modificacion);
-            if(modificacion == 1)
+            do
             {
-                printf("\nIngrese nuevo nombre y apellido: ");
-                fflush(stdin);
-                scanf("%s", &arbol->dato.nombreYApellido);
+                do
+                {
+                    printf("\nQue desea modificar?\n1.Nombre y apellido\n2.Calle y altura\n3.Contrasenia\n4.Telefono\nIngrese una opcion: ");
+                    fflush(stdin);
+                    scanf("%d", &modificacion);
+                    system("cls");
+                }
+                while(modificacion !=1 && modificacion!=2 && modificacion!=3 &&modificacion!= 4);
+
+                if(modificacion == 1)
+                {
+                    printf("\nIngrese nuevo nombre y apellido: ");
+                    fflush(stdin);
+                    scanf("%s", &arbol->dato.nombreYApellido);
+                }
+                if(modificacion == 2)
+                {
+                    printf("\nIngrese nuevo domicilio: ");
+                    fflush(stdin);
+                    scanf("%s", &arbol->dato.calleYAltura);
+                }
+                if(modificacion == 3)
+                {
+                    printf("\nIngrese nueva contrasenia: ");
+                    fflush(stdin);
+                    scanf("%s", &arbol->dato.pass);
+                }
+                if(modificacion == 4)
+                {
+                    printf("\nIngrese nuevo telefono: ");
+                    fflush(stdin);
+                    scanf("%s", &arbol->dato.telefono);
+                }
+                do
+                {
+                    printf("Desea cambiar algo mas? s/n: ");
+                    fflush(stdin);
+                    scanf("%c", &control);
+                }while(control!='s' && control!='n');
+
+                system("cls");
             }
-            if(modificacion == 2)
-            {
-                printf("\nIngrese nuevo domicilio: ");
-                fflush(stdin);
-                scanf("%s", &arbol->dato.calleYAltura);
-            }
-            if(modificacion == 3)
-            {
-                printf("\nIngrese nueva contrasenia: ");
-                fflush(stdin);
-                scanf("%s", &arbol->dato.pass);
-            }
-            if(modificacion == 4)
-            {
-                printf("\nIngrese nuevo telefono: ");
-                fflush(stdin);
-                scanf("%s", &arbol->dato.telefono);
-            }
+            while(control == 's');
             sobreEscribirArchivo(arbol);
 
         }
