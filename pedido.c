@@ -1,6 +1,4 @@
 #include "comida.h"
-#include "bebidas.h"
-#include "postres.h"
 #include "pedido.h"
 #include "loginYMenu.h"
 int Npedidos=1;
@@ -136,7 +134,7 @@ nodoPedido *buscarUltimoPedido (nodoPedido *lista)
     return seg;
 }
 
-void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Categoriaspos[],  int validos,int validosBebida,int validosPostre) ///hacer una funcion que nos de un registropedido y ahi hacer el pedido++
+void *hacerPedido(CatComida arreglo[],  int validos) ///hacer una funcion que nos de un registropedido y ahi hacer el pedido++
 {
     int elecc;
     int cate;
@@ -145,8 +143,6 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
     aux.idpedido=Npedidos; ///no olvidar el ++
     aux.costeTotal=0;
     nodoComida *elegir;
-    nodoBebida *elegir2;
-    nodoPostre *elegir3;
     int pos;
 
     do
@@ -158,7 +154,6 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
         printf("1.Ingresar producto\n2.Modificar producto\n3.Eliminar producto\n9.Realizar pedido\n0.Salir\n");
         fflush(stdin);
         scanf("%i",&elecc);
-        int tipo;
 
         switch(elecc)
         {
@@ -166,34 +161,12 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
         {
             do
             {
-                printf("1.Comida\n2.Bebidas\n3.Postres\n");
-                fflush(stdin);
-                scanf("%i",&tipo);
-                if(tipo==1)
-                {
-                    mostrarCategorias(arreglo,validos);
-                }else if(tipo==2)
-                {
-                    mostrarCategoriasBebidas(CategoriasBeb,validosBebida);
-                }else if(tipo==3)
-                {
-                    mostrarCategoriasPostres(Categoriaspos,validosPostre);
-                }
+                mostrarCategorias(arreglo,validos);
                 printf("Ingrese el id de la categoria:\n ");
                 fflush(stdin);
                 scanf("%i",&cate);
                 system("cls");
-                if(tipo==1)
-                {
-                    pos=buscarPosCatComida(arreglo, cate, validos);
-                }else if(tipo==2)
-                {
-                    pos=buscarPosCatBebida(CategoriasBeb,cate,validosBebida);
-                }else if(tipo==3)
-                {
-                    pos=buscarPosCatPostre(Categoriaspos,cate,validosPostre);
-                }
-
+                pos=buscarPosCatComida(arreglo, cate, validos);
                 printf("pos %i\n",pos);
                 if(pos==-1)
                 {
@@ -202,72 +175,27 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
             }
             while(pos==-1);
             system("cls");
-            if(tipo==1)
-                {
-                    mostrarListaComida(arreglo[pos].lista);
-                }else if(tipo==2)
-                {
-                    mostrarListaBebida(CategoriasBeb[pos].lista);
-                }else if(tipo==3)
-                {
-                    mostrarListaPostres(Categoriaspos[pos].lista);
-                }
-
+            mostrarListaComida(arreglo[pos].lista);
             int IdElegido;
             do
             {
-                    printf("Seleccione el id del producto:\n");
-                    fflush(stdin);
-                    scanf("%i",&IdElegido);
-                    if(tipo==1)
-                    {
-
-                        elegir=encontrarComida(arreglo[pos].lista,IdElegido);
-                        if(elegir==NULL)
-                        {
-                            printf("Id invalido, seleccione otro\n");
-                        }
-                    }
-                    else if(tipo==2)
-                    {
-
-                        elegir2=encontrarBebida(CategoriasBeb[pos].lista,IdElegido);
-                        if(elegir2==NULL)
-                        {
-                            printf("Id invalido, seleccione otro\n");
-                        }
-                    }
-                    else if(tipo==3)
-                    {
-
-                        elegir3=encontrarPostre(Categoriaspos[pos].lista,IdElegido);
-                        if(elegir3==NULL)
-                        {
-                            printf("Id invalido, seleccione otro\n");
-                        }
-                    }
-
-
-            }while(elegir==NULL && elegir2==NULL && elegir3==NULL);
-            if(tipo==1)
+                printf("Seleccione el id del producto:\n");
+                fflush(stdin);
+                scanf("%i",&IdElegido);
+                elegir=encontrarComida(arreglo[pos].lista,IdElegido);
+                if(elegir==NULL)
                 {
-                    strcpy(aux.producto,elegir->dato.nombre);
-                    aux.precio=elegir->dato.precio;
-                }else if(tipo==2)
-                {
-                    strcpy(aux.producto,elegir2->dato.nombre);
-                    aux.precio=elegir2->dato.precio;
-                }else if(tipo==3)
-                {
-                    strcpy(aux.producto,elegir3->dato.nombre);
-                    aux.precio=elegir3->dato.precio;
+                    printf("Id invalido, seleccione otro\n");
                 }
+            }
+            while(elegir==NULL);
 
 
+            strcpy(aux.producto,elegir->dato.nombre);
             printf("Ingrese la cantidad: \n");
             fflush(stdin);
             scanf("%i",&aux.cantidad);
-
+            aux.precio=elegir->dato.precio;
             listaPedidoCelda=altaPedidos(listaPedidoCelda,aux);
             system("cls");
             mostrarUnPedido(listaPedidoCelda,aux.idpedido);

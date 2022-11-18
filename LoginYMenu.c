@@ -482,6 +482,8 @@ void menuAdministrador()
         case 2:
             ///FUNCION HACER UN NUEVO PEDIDO
             listaPedidoCelda=hacerPedido(Categorias,validos);
+            seraRedirigidoAlMenuUsuario();
+            menuUsuario();
             break;
         case 3:
             ///FUNCION CANCELAR UN PEDIDO
