@@ -1,14 +1,14 @@
 # depslib dependency file v1.0
-1668759587 source:c:\users\diego\desktop\tp final\tp-final-lab-2\arbol.c
+1668782689 source:c:\users\diego\desktop\tp final\tp-final-lab-2\arbol.c
 	"loginYMenu.h"
 	"arbol.h"
 	"string.h"
 
-1668750504 c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.h
+1668778570 c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.h
 	"pedido.h"
 	"comida.h"
 
-1668759368 c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.h
+1668778570 c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -16,30 +16,30 @@
 	"bebidas.h"
 	"postres.h"
 
-1668640788 c:\users\diego\desktop\tp final\tp-final-lab-2\comida.h
+1668778570 c:\users\diego\desktop\tp final\tp-final-lab-2\comida.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1668758552 c:\users\diego\desktop\tp final\tp-final-lab-2\arbol.h
+1668778570 c:\users\diego\desktop\tp final\tp-final-lab-2\arbol.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"loginYMenu.h"
 
-1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.c
+1668778570 source:c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.c
 	"bebidas.h"
 
-1668640788 c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.h
+1668778570 c:\users\diego\desktop\tp final\tp-final-lab-2\bebidas.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\comida.c
+1668778570 source:c:\users\diego\desktop\tp final\tp-final-lab-2\comida.c
 	"comida.h"
 	"pedido.h"
 
-1668759381 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
+1668782689 source:c:\users\diego\desktop\tp final\tp-final-lab-2\loginymenu.c
 	<stdio.h>
 	<stdlib.h>
 	"windows.h"
@@ -51,12 +51,12 @@
 	"loginYMenu.h"
 	"arbol.h"
 
-1668640788 c:\users\diego\desktop\tp final\tp-final-lab-2\postres.h
+1668778570 c:\users\diego\desktop\tp final\tp-final-lab-2\postres.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1668627511 source:c:\users\diego\desktop\tp final\tp-final-lab-2\main.c
+1668778570 source:c:\users\diego\desktop\tp final\tp-final-lab-2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -66,10 +66,10 @@
 	"bebidas.h"
 	"loginYMenu.h"
 
-1668643822 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
+1668778570 source:c:\users\diego\desktop\tp final\tp-final-lab-2\postres.c
 	"postres.h"
 
-1668760785 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
+1668778570 source:c:\users\diego\desktop\tp final\tp-final-lab-2\pedido.c
 	"comida.h"
 	"bebidas.h"
 	"postres.h"

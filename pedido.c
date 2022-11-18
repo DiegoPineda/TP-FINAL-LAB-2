@@ -156,7 +156,7 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
         printf("\n\n\t\t\t\t%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,187);
         printf("\n\t\t\t\t%cCARRITO%c",186,186);
         printf("\n\t\t\t\t%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,188);
-        printf("1.Ingresar producto\n2.Modificar producto\n3.Eliminar producto\n9.Realizar pedido\n0.Salir\n");
+        printf("1.Ingresar producto\n9.Realizar pedido\n0.Salir\n");
         fflush(stdin);
         scanf("%i",&elecc);
         int tipo=0;
@@ -167,9 +167,11 @@ void *hacerPedido(CatComida arreglo[],CeldaBebida CategoriasBeb[],CeldaPostre Ca
         {
             do
             {
+                system("cls");
                 printf("1.Comida\n2.Bebidas\n3.Postres\n");
                 fflush(stdin);
                 scanf("%i",&tipo);
+                system("cls");
                 if(tipo==1)
                 {
                     mostrarCategorias(arreglo,validos);
